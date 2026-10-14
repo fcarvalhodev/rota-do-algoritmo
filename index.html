@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Rota do Algoritmo</title>
+<meta name="description" content="Contas derrubadas, bloqueadas ou escondidas pela Meta no Brasil, explicadas de um jeito simples: os casos da esquerda, o que aconteceu com a direita, o que a Meta diz, o que o TSE pediu e o que ainda não dá para afirmar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: the Rotas skeleton in the easy-reading format. The Algoritmo route colour is indigo. Order: question, short answer, four ways an account disappears, the cases, the count, why a list is not a pattern, the other side, what Meta says and what the TSE asked, true or false, summary, all the cases. */
+:root{
+  --bg:#f1f1f5; --paper:#fbfbfd; --ink:#1b1b24; --muted:#5b5b6b; --line:#d5d5e0; --soft:#e6e6ee;
+  --accent:#4338ca; --accent-soft:#e0e1fa;
+  --court:#8a6512; --court-soft:#f4ead2; --gray:#8a8c92;
+  --ok:#1f6b45; --ok-soft:#dcefe3; --no:#a12a2a; --no-soft:#f6dede; --part:#7a5a00; --part-soft:#f6ebc9; --open:#6b5bb5; --open-soft:#e8e5f6;
+  --display:"Archivo","Arial Narrow",Impact,sans-serif;
+  --ui:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --text:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121218; --paper:#1a1a22; --ink:#ebebf2; --muted:#a5a5b5; --line:#2e2e3a; --soft:#24242e;
+  --accent:#a5b4fc; --accent-soft:#1f2147;
+  --court:#e0b552; --court-soft:#3a2e14; --gray:#6e7077;
+  --ok:#7fd3a3; --ok-soft:#173326; --no:#f19b9b; --no-soft:#3a1c1c; --part:#e8c25a; --part-soft:#3a3016; --open:#a99cf0; --open-soft:#29254a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121218; --paper:#1a1a22; --ink:#ebebf2; --muted:#a5a5b5; --line:#2e2e3a; --soft:#24242e;
+  --accent:#a5b4fc; --accent-soft:#1f2147;
+  --court:#e0b552; --court-soft:#3a2e14; --gray:#6e7077;
+  --ok:#7fd3a3; --ok-soft:#173326; --no:#f19b9b; --no-soft:#3a1c1c; --part:#e8c25a; --part-soft:#3a3016; --open:#a99cf0; --open-soft:#29254a; color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:19px;line-height:1.7}
+a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:880px;margin:0 auto;padding-inline:16px}
+.kicker,.mono{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.kicker{color:var(--accent)}
+h1{font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(46px,11vw,104px);line-height:.9;margin:0;text-transform:uppercase;overflow-wrap:anywhere}
+h2{font-family:var(--display);font-stretch:66%;font-weight:800;font-size:clamp(34px,7vw,52px);line-height:.95;margin:0;text-transform:uppercase;text-wrap:balance}
+h3{font-family:var(--ui);font-weight:700;font-size:22px;line-height:1.2;margin:0;text-wrap:balance}
+p{margin:0}
+header,section{display:grid;grid-template-columns:minmax(0,1fr)}
+header{padding-block:40px 8px;gap:18px}
+section{padding-block:48px 8px;gap:18px}
+.lg{font-size:21px;line-height:1.6}
+.sub{color:var(--muted);max-width:62ch}
+.src{font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:2px 14px;line-height:1.5}
+.src a{color:var(--muted)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:20px;display:grid;gap:12px;align-content:start}
+.answer-box{background:var(--accent-soft);border:2px solid var(--accent);border-radius:6px;padding:20px;margin-top:40px}
+.note{font-size:16px;color:var(--muted)}
+.rv-btn{display:inline-flex;align-items:center;gap:8px;justify-self:start;font-family:var(--ui);font-weight:800;font-size:16px;letter-spacing:.02em;text-decoration:none;color:var(--paper);background:var(--accent);padding:10px 16px;border-radius:999px;box-shadow:0 2px 0 rgba(0,0,0,.15)}
+.rv-btn:hover{filter:brightness(1.08)}
+
+/* four ways */
+.path{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;align-items:stretch}
+.stop{background:var(--paper);border:2px solid var(--accent);border-radius:8px;padding:14px 10px;display:grid;gap:6px;justify-items:center;text-align:center;align-content:start}
+.stop .emo{font-size:40px;line-height:1}
+.stop b{font-family:var(--ui);font-size:17px;line-height:1.2}
+.stop span{font-size:15px;color:var(--muted);line-height:1.4}
+.stop.court{border-color:var(--court);background:var(--court-soft)}
+.stop.court b{color:var(--court)}
+.who-decides{display:grid;grid-template-columns:1fr 3fr;gap:8px;font-family:var(--ui);font-weight:700;font-size:15px;text-align:center}
+.who-decides span{padding:6px;border-radius:4px}
+.who-decides .j{background:var(--court-soft);color:var(--court)}
+.who-decides .m{background:var(--accent-soft);color:var(--accent)}
+
+/* cases */
+.cases{display:grid;gap:12px}
+.case{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--c,var(--accent));border-radius:6px;padding:16px 18px;display:grid;grid-template-columns:120px minmax(0,1fr);gap:4px 16px}
+.case .when{font-family:var(--mono);font-size:13px;color:var(--muted);line-height:1.4;padding-top:4px}
+.case .bd{display:grid;gap:6px}
+.case h3{font-size:21px}
+.case .who{font-family:var(--ui);font-size:15px;color:var(--muted);line-height:1.3}
+.case p{font-size:17px;line-height:1.55}
+.case .chips{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.st{font-family:var(--ui);font-weight:800;font-size:13px;letter-spacing:.04em;text-transform:uppercase;padding:3px 10px;border-radius:999px;border:2px solid currentColor}
+.st.y{color:var(--ok);background:var(--ok-soft)}
+.st.n{color:var(--no);background:var(--no-soft)}
+.st.j{color:var(--court);background:var(--court-soft)}
+.st.g{color:var(--muted);background:var(--soft)}
+.why{font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.4}
+.group-t{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+
+/* count */
+.tally{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:6px;max-width:520px}
+.tally i{aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font-style:normal;font-family:var(--ui);font-weight:900;font-size:clamp(14px,3vw,22px);color:var(--paper)}
+.tally i.y{background:var(--ok)}
+.tally i.n{background:var(--no)}
+.leg{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--ui);font-weight:600;font-size:16px}
+.leg i{display:inline-block;width:16px;height:16px;border-radius:50%;background:var(--c);margin-right:6px;vertical-align:-2px}
+
+/* newspaper analogy */
+.jar{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.jar .card{border-top:6px solid var(--c)}
+.jar .card .emo{font-size:40px;line-height:1}
+.jar .card p{font-size:17px}
+.jar .card b{font-family:var(--ui);font-size:20px;line-height:1.3}
+
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.two .card{border-top:6px solid var(--c)}
+.two .card h3{font-size:20px}
+.two .card ul{margin:0;padding-left:20px;display:grid;gap:8px;font-size:17px;line-height:1.5}
+
+/* true or false */
+.vf{display:grid;gap:12px}
+.vfi{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:16px 18px;display:grid;gap:8px}
+.vfi p{font-size:18px}
+.badge{justify-self:start;font-family:var(--ui);font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase;padding:4px 12px;border-radius:999px}
+.badge.f{background:var(--no-soft);color:var(--no);border:2px solid var(--no)}
+.badge.m{background:var(--part-soft);color:var(--part);border:2px solid var(--part)}
+.badge.v{background:var(--ok-soft);color:var(--ok);border:2px solid var(--ok)}
+.badge.o{background:var(--open-soft);color:var(--open);border:2px solid var(--open)}
+
+.verdict{background:var(--ink);color:var(--paper);border-radius:6px;padding:22px 20px;display:grid;gap:12px}
+.verdict h2{color:var(--paper)}
+.verdict ul{margin:0;padding-left:20px;display:grid;gap:8px;font-size:20px}
+details.mais{margin-top:44px;border:2px solid var(--line);border-radius:6px;background:var(--paper)}
+details.mais>summary{cursor:pointer;padding:18px 20px;font-family:var(--ui);font-weight:700;font-size:19px;list-style:none;display:flex;justify-content:space-between;gap:12px}
+details.mais>summary::after{content:"+";font-family:var(--mono);font-size:24px;line-height:1}
+details.mais[open]>summary::after{content:"−"}
+details.mais>summary::-webkit-details-marker{display:none}
+.mais-body{padding:0 20px 20px;font-size:17px;line-height:1.6;display:grid;gap:14px}
+.tbl{overflow-x:auto}
+.mais-body table{width:100%;border-collapse:collapse;font-size:15px;min-width:560px}
+.mais-body th,.mais-body td{text-align:left;padding:8px 6px;border-top:1px solid var(--line);vertical-align:top}
+.mais-body th{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.mais-body td:first-child{font-family:var(--mono);white-space:nowrap;font-size:13px}
+footer{padding-block:44px 60px;color:var(--muted);font-size:14px;display:grid;gap:8px}
+@media (max-width:640px){.path{grid-template-columns:repeat(2,minmax(0,1fr))}.who-decides{grid-template-columns:1fr}.case{grid-template-columns:minmax(0,1fr)}.case .when{padding-top:0}}
+</style>
+</head><body>
+
+
+<style>/* barra comum das Rotas */.rotas-bar{border-bottom:1px solid var(--line);background:var(--bg);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}.rotas-bar>div{max-width:880px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}.rotas-bar a{color:var(--muted);text-decoration:none;padding-block:2px;border-bottom:2px solid transparent}.rotas-bar a:hover{color:var(--ink)}.rotas-bar a[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}.rotas-bar .rb-home{color:var(--accent);font-weight:600}.rotas-bar a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}</style><style>/* padrão das Rotas: formato fácil */body{font-size:19px;line-height:1.7}h1{font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(46px,11vw,104px);line-height:.9;text-transform:uppercase;overflow-wrap:anywhere}h2{font-family:var(--display);font-stretch:66%;font-weight:800;font-size:clamp(34px,7vw,52px);line-height:.95;text-transform:uppercase}</style><nav class="rotas-bar" aria-label="Rotas"><div><a class="rb-home" href="https://fcarvalhodev.github.io/rotas/">Rotas</a><a href="https://fcarvalhodev.github.io/rota-washington/">Washington</a><a href="https://fcarvalhodev.github.io/rota-master/">Master</a><a href="https://fcarvalhodev.github.io/rota-curitiba/">Curitiba</a><a href="https://fcarvalhodev.github.io/rota-da-fe/">Fé</a><a href="https://fcarvalhodev.github.io/rota-esplanada/">Esplanada</a><a href="https://fcarvalhodev.github.io/rota-itamaraty/">Itamaraty</a><a href="https://fcarvalhodev.github.io/rota-da-picanha/">Picanha</a><a href="https://fcarvalhodev.github.io/rota-do-ibge/">IBGE</a><a href="https://fcarvalhodev.github.io/rota-velho-chico/">Velho Chico</a><a href="https://fcarvalhodev.github.io/rota-do-tesouro/">Tesouro</a><a href="https://fcarvalhodev.github.io/rota-rouanet/">Rouanet</a><a href="https://fcarvalhodev.github.io/rota-dos-ventos/">Ventos</a><a href="https://fcarvalhodev.github.io/rota-do-algoritmo/" aria-current="page">Algoritmo</a></div></nav>
+<header class="wrap">
+  <div class="kicker">Rota do Algoritmo</div>
+  <h1>A Meta derruba mais contas da esquerda?</h1>
+  <p class="lede lg">Perfis de esquerda com centenas de milhares de seguidores sumiram do Instagram e do Facebook, quase sempre sem explicação. A campanha de Lula diz que a Meta atrapalha o presidente. A Meta nega. Aqui estão os casos, o outro lado e o que ainda falta saber, em palavras simples.</p>
+  <a class="rv-btn" href="visual.html"><span aria-hidden="true">📊</span> Ver o resumo em ícones</a>
+</header>
+
+<main class="wrap">
+
+<section class="answer-box" aria-labelledby="h-curta">
+  <h2 id="h-curta">A resposta curta</h2>
+  <p class="lg">Ainda não dá para afirmar. Os casos de contas de esquerda derrubadas ou bloqueadas pela própria Meta são reais, e muitas voltaram depois sem explicação. Mas ninguém de fora sabe quantas contas de cada lado foram derrubadas, e sem essa conta não dá para provar perseguição. A Meta nega qualquer preferência e fala em erros e falhas técnicas. O TSE pediu os dados à empresa, e ela ainda não entregou tudo.</p>
+</section>
+
+<section aria-labelledby="h-jeitos">
+  <h2 id="h-jeitos">Quatro jeitos de uma conta sumir</h2>
+  <p class="sub lg">Nem toda conta que some foi escolha da Meta. Antes de comparar casos, é preciso saber quem decidiu:</p>
+  <div class="path">
+    <div class="stop court"><span class="emo" aria-hidden="true">⚖️</span><b>Ordem da Justiça</b><span>Um juiz manda tirar do ar. A empresa só cumpre.</span></div>
+    <div class="stop"><span class="emo" aria-hidden="true">📕</span><b>Regra da plataforma</b><span>A Meta diz que a conta quebrou os “padrões da comunidade”.</span></div>
+    <div class="stop"><span class="emo" aria-hidden="true">🛠️</span><b>Erro ou falha</b><span>Um robô ou um defeito derruba a conta, e depois ela volta.</span></div>
+    <div class="stop"><span class="emo" aria-hidden="true">🔇</span><b>Menos alcance</b><span>A conta continua, mas muito menos gente vê os posts.</span></div>
+  </div>
+  <div class="who-decides" aria-hidden="true"><span class="j">Quem decide: a Justiça</span><span class="m">Quem decide: a própria Meta</span></div>
+  <p class="lg">Esta rota trata dos três últimos: o que a <b>Meta faz por conta própria</b>. Quando a ordem vem da Justiça, a pergunta é outra, e ela está na <a href="https://fcarvalhodev.github.io/rota-washington/bigtechs.html">Rota Washington</a>.</p>
+</section>
+
+<section aria-labelledby="h-casos">
+  <h2 id="h-casos">Os casos</h2>
+  <p class="sub lg">Contas de esquerda ou críticas ao bolsonarismo que a Meta derrubou, bloqueou ou escondeu, em ordem de data. Só entram casos noticiados com nome e data.</p>
+
+  <div class="group-t">2024 e 2025</div>
+  <div class="cases">
+    <div class="case"><div class="when">20 jun 2024</div><div class="bd"><h3>Marquito</h3><span class="who">deputado estadual do PSOL em Santa Catarina</span><p>O Instagram foi suspenso “sem aviso prévio e com justificativas genéricas”, segundo ele. No dia seguinte, um juiz mandou a Meta devolver a conta em 24 horas.</p><div class="chips"><span class="st j">Voltou por ordem da Justiça</span></div><span class="src"><a href="https://www.nsctotal.com.br/?p=7201763" target="_blank" rel="noopener">NSC Total</a></span></div></div>
+    <div class="case"><div class="when">jul 2025</div><div class="bd"><h3>Bruna Santiago</h3><span class="who">escritora · 3 perfis, entre eles @leituraspretas, com 39,6 mil seguidores</span><p>Os três perfis caíram ao mesmo tempo. A Meta falou em conteúdo sexual no perfil pessoal e disse que os outros estavam ligados a uma conta já banida. Ela foi à Justiça.</p><div class="chips"><span class="st n">Não tinha voltado em nov. 2025</span></div><span class="src"><a href="https://brasildefato.com.br/2025/11/27/ofensiva-contra-vozes-progressistas-chavoso-da-usp-santineli-e-bruna-santiago-denunciam-censura-da-meta-apos-contas-banidas/" target="_blank" rel="noopener">Brasil de Fato</a></span></div></div>
+    <div class="case"><div class="when">6 ago 2025</div><div class="bd"><h3>Jones Manoel</h3><span class="who">historiador e comunicador · cerca de 1 milhão de seguidores</span><p>Instagram e Facebook saíram do ar à noite, sem aviso. A Meta disse só que as contas não seguiam os “padrões da plataforma”. Na manhã de 8 de agosto elas voltaram, também sem explicação.</p><div class="chips"><span class="st y">Voltou em 8 ago</span></div><span class="src"><a href="https://tvtnews.com.br/?p=759156" target="_blank" rel="noopener">TVT News: contas derrubadas</a><a href="https://tvtnews.com.br/?p=759252" target="_blank" rel="noopener">TVT News: contas devolvidas</a></span></div></div>
+    <div class="case"><div class="when">out 2025</div><div class="bd"><h3>Tiago Santineli</h3><span class="who">humorista · cerca de 850 mil seguidores</span><p>A conta foi suspensa depois de piadas sobre a morte do ativista americano Charlie Kirk. Ele diz que ela já foi derrubada quatro vezes. A Meta não comentou.</p><div class="chips"><span class="st n">Não tinha voltado em nov. 2025</span></div><span class="src"><a href="https://brasildefato.com.br/2025/11/27/ofensiva-contra-vozes-progressistas-chavoso-da-usp-santineli-e-bruna-santiago-denunciam-censura-da-meta-apos-contas-banidas/" target="_blank" rel="noopener">Brasil de Fato</a><a href="https://www.indexoncensorship.org/2025/12/meta-bans-brazilian-left-wing-influencers/" target="_blank" rel="noopener">Index on Censorship</a></span></div></div>
+    <div class="case"><div class="when">16 nov 2025</div><div class="bd"><h3>Chavoso da USP</h3><span class="who">sociólogo Thiago Torres · mais de 1 milhão de seguidores</span><p>A conta principal caiu “por não seguir os padrões da comunidade”, sem dizer qual regra. A conta reserva, com cerca de 380 mil seguidores, caiu dias depois, e um perfil sobre violência policial também. Em 20 de novembro uma liminar mandou devolver a conta principal. Até 12 de dezembro, a Meta não tinha cumprido.</p><div class="chips"><span class="st n">Não tinha voltado em dez. 2025</span></div><span class="src"><a href="https://www.poder360.com.br/poder-gente/chavoso-da-usp-influenciador-de-esquerda-tem-conta-desativada-no-instagram/" target="_blank" rel="noopener">Poder360</a><a href="https://brasildefato.com.br/2025/11/27/ofensiva-contra-vozes-progressistas-chavoso-da-usp-santineli-e-bruna-santiago-denunciam-censura-da-meta-apos-contas-banidas/" target="_blank" rel="noopener">Brasil de Fato</a><a href="https://www.indexoncensorship.org/2025/12/meta-bans-brazilian-left-wing-influencers/" target="_blank" rel="noopener">Index on Censorship: liminar</a></span></div></div>
+    <div class="case"><div class="when">9–10 dez 2025</div><div class="bd"><h3>Lula, PT e PSOL somem da busca</h3><span class="who">perfis de políticos, jornalistas e movimentos de esquerda</span><p>Perfis pararam de aparecer na busca do Instagram e tiveram queda forte de alcance, logo depois do protesto de Glauber Braga na Câmara. A Meta disse que foi uma falha técnica no mundo todo, que atingiu também a direita, e pediu desculpas. PSOL e Fenaj levaram o caso ao Ministério Público Federal.</p><div class="chips"><span class="st y">Voltou no mesmo dia</span><span class="why">Motivo dado: falha técnica global</span></div><span class="src"><a href="https://atarde.com.br/brasil/meta-se-pronuncia-apos-sumico-de-perfis-de-lula-e-liderancas-do-pt-1371848" target="_blank" rel="noopener">A Tarde: resposta da Meta</a><a href="https://www.congressoemfoco.com.br/noticia/114781/psol-denuncia-a-meta-ao-mpf-por-reduzir-alcance-de-perfis-de-esquerda" target="_blank" rel="noopener">Congresso em Foco: PSOL e Fenaj</a></span></div></div>
+  </div>
+
+  <div class="group-t">2026, na campanha</div>
+  <div class="cases">
+    <div class="case"><div class="when">23 set 2026</div><div class="bd"><h3>Conta de anúncios da campanha de Lula</h3><span class="who">conta que paga os anúncios do candidato</span><p>Foi desativada. Ao TSE, a Meta admitiu que foi por engano: um anúncio foi confundido com golpe de programa social falso. A empresa diz que a conta voltou em cerca de uma hora.</p><div class="chips"><span class="st y">Voltou em cerca de 1 hora</span><span class="why">Motivo dado: erro do filtro contra golpes</span></div><span class="src"><a href="https://revistaforum.com.br/tecnologia/meta-nao-entregou-dados-lula/" target="_blank" rel="noopener">Revista Fórum: defesa da Meta no TSE</a></span></div></div>
+    <div class="case"><div class="when">23 set 2026</div><div class="bd"><h3>Revelando Brasil</h3><span class="who">perfil que publicou vídeo de Fabio Porchat sobre o caso Master</span><p>Saiu do ar por “não seguir os padrões” do Instagram. Horas depois, a Meta devolveu e pediu desculpas.</p><div class="chips"><span class="st y">Voltou no mesmo dia</span></div><span class="src"><a href="https://www.diariodepernambuco.com.br/politica/2026/09/11724707-caso-master-meta-recua-apos-remover-perfil-que-publicou-video-de-porchat.html" target="_blank" rel="noopener">Diario de Pernambuco</a></span></div></div>
+    <div class="case"><div class="when">23 set 2026</div><div class="bd"><h3>Igreja Alternativa</h3><span class="who">igreja de Piracicaba (SP)</span><p>Foi desativada depois de um vídeo do pastor criticando a proximidade de igrejas com o bolsonarismo. A Meta revisou, devolveu a conta e admitiu o erro.</p><div class="chips"><span class="st y">Voltou</span><span class="why">Motivo dado: erro</span></div><span class="src"><a href="https://ohoje.com/2026/09/26/meta-devolve-perfil-de-igreja-apos-suspensao-no-instagram-por-criticas-ao-bolsonarismo/" target="_blank" rel="noopener">O Hoje</a></span></div></div>
+    <div class="case"><div class="when">7 out 2026</div><div class="bd"><h3>Vídeos de Lula “zerados”</h3><span class="who">perfil oficial do presidente no Instagram</span><p>Os vídeos mostraram visualizações zeradas ou paradas por algumas horas. A Meta diz que foi um defeito dos Reels em mais de 100 países e que os vídeos continuaram sendo entregues. Ela não mostrou os números que provariam isso.</p><div class="chips"><span class="st g">Defeito, segundo a Meta</span></div><span class="src"><a href="https://revistaforum.com.br/tecnologia/meta-nao-entregou-dados-lula/" target="_blank" rel="noopener">Revista Fórum: defesa da Meta no TSE</a></span></div></div>
+    <div class="case"><div class="when">9–10 out 2026</div><div class="bd"><h3>Lula sem poder impulsionar posts</h3><span class="who">perfil do candidato no Instagram</span><p>Segundo a campanha, o perfil não conseguiu pagar para impulsionar posts da tarde de sexta até a manhã de sábado. A campanha foi ao TSE e à ANPD. A Meta chamou as acusações de “simplesmente falsas”.</p><div class="chips"><span class="st y">Voltou no dia seguinte</span></div><span class="src"><a href="https://www.correiodamanha.com.br/politica/2026/10/326073-campanha-de-lula-acusa-meta-de-favorecer-flavio-bolsonaro-nas-redes.html" target="_blank" rel="noopener">Correio da Manhã</a></span></div></div>
+  </div>
+</section>
+
+<section aria-labelledby="h-conta">
+  <h2 id="h-conta">Voltaram ou não?</h2>
+  <p class="sub lg">Dos 10 casos acima em que a conta caiu ou foi bloqueada (o defeito dos vídeos fica de fora):</p>
+  <div class="card">
+    <div class="tally" role="img" aria-label="10 bolinhas: 7 verdes de contas que voltaram e 3 vermelhas de contas que não tinham voltado na última notícia"><i class="y">✓</i><i class="y">✓</i><i class="y">✓</i><i class="y">✓</i><i class="y">✓</i><i class="y">✓</i><i class="y">✓</i><i class="n">✕</i><i class="n">✕</i><i class="n">✕</i></div>
+    <div class="leg"><span style="--c:var(--ok)"><i></i>7 voltaram</span><span style="--c:var(--no)"><i></i>3 não tinham voltado na última notícia</span></div>
+    <p class="note">Das 7 que voltaram, 6 voltaram por decisão da própria Meta, quase sempre em horas. Só uma voltou por ordem da Justiça. As 3 que não voltaram são de comunicadores, e não de políticos: Chavoso da USP, Tiago Santineli e Bruna Santiago. Não achamos notícia mais recente sobre elas.</p>
+  </div>
+</section>
+
+<section aria-labelledby="h-lista">
+  <h2 id="h-lista">Por que uma lista não prova perseguição</h2>
+  <p class="sub lg">Uma lista de casos mostra que algo aconteceu. Ela não mostra se acontece mais com um lado do que com o outro. Pense assim:</p>
+  <div class="jar">
+    <div class="card" style="--c:var(--accent)"><span class="emo" aria-hidden="true">📰</span><b>Só vemos o que vira notícia</b><p>Quem tem advogado, deputado amigo ou muitos seguidores consegue aparecer no jornal. Contas pequenas que caem, de qualquer lado, quase nunca aparecem.</p></div>
+    <div class="card" style="--c:var(--part)"><span class="emo" aria-hidden="true">🧮</span><b>Falta o total</b><p>Para dizer “mais”, é preciso saber quantas contas de esquerda e quantas de direita foram derrubadas no mesmo período, pelas mesmas regras. Só a Meta tem esse número.</p></div>
+    <div class="card" style="--c:var(--open)"><span class="emo" aria-hidden="true">🔍</span><b>Falta o motivo</b><p>A Meta quase nunca diz qual post quebrou qual regra. Sem isso, ninguém consegue checar se a regra foi a mesma para todos.</p></div>
+  </div>
+  <p class="lg">Isso vale nos dois sentidos: a falta de dados não prova que há perseguição e também não prova que não há.</p>
+</section>
+
+<section aria-labelledby="h-direita">
+  <h2 id="h-direita">E as contas de direita?</h2>
+  <p class="sub lg">Usamos o mesmo critério: só casos noticiados, com nome e data. Separamos o que a Meta decidiu do que a Justiça mandou.</p>
+  <div class="two">
+    <div class="card" style="--c:var(--accent)"><h3>Decisão da própria Meta</h3><ul>
+      <li><b>Jul 2020:</b> o Facebook derrubou uma rede de contas falsas ligada aos gabinetes de Jair, Flávio e Eduardo Bolsonaro e a deputados do PSL: 35 contas e 14 páginas no Facebook e 38 contas no Instagram, com perto de 1 milhão de seguidores somados. O motivo dado foi “comportamento inautêntico coordenado”.</li>
+      <li><b>Jun 2021:</b> a advogada de Jair Bolsonaro no STF teve o Instagram suspenso de manhã e devolvido à tarde, sem motivo informado.</li>
+      <li>Não achamos casos recentes, de 2025 ou 2026, de perfis grandes de direita derrubados pela própria Meta no Brasil. Isso não quer dizer que não existam.</li>
+    </ul></div>
+    <div class="card" style="--c:var(--court)"><h3>Ordem da Justiça</h3><ul>
+      <li><b>Ago 2020:</b> por ordem de Alexandre de Moraes, no inquérito das fake news, o Facebook bloqueou no mundo todo 12 contas de apoiadores de Bolsonaro, entre elas a de Sara Winter. A empresa cumpriu, chamou a ordem de “extrema” e recorreu.</li>
+      <li><b>2024:</b> o X ficou fora do ar no Brasil por não cumprir ordens de bloqueio de perfis. Esse caso está na <a href="https://fcarvalhodev.github.io/rota-washington/bigtechs.html">Rota Washington</a>.</li>
+      <li>Nos casos grandes que achamos desde 2020, os perfis de direita saíram do ar mais por ordem da Justiça do que por decisão das plataformas.</li>
+    </ul></div>
+  </div>
+  <p class="lg">A direita também tem queixa contra a Meta na campanha. Em julho de 2026 o PL denunciou ao TSE uma suposta rede de cerca de 20 mil perfis falsos que pagavam anúncios contra Flávio. O TSE mandou a Meta guardar os dados desses perfis. É outro tipo de problema, de anúncios contra o candidato e não de contas derrubadas, mas mostra que os dois lados acusam a plataforma.</p>
+  <span class="src"><a href="https://congressoemfoco.com.br/tecnologia/facebook-remove-contas-ligadas-ao-psl-e-a-familia-bolsonaro" target="_blank" rel="noopener">Congresso em Foco: rede ligada aos gabinetes</a><a href="https://revistaoeste.com/tecnologia/advogada-de-bolsonaro-tem-conta-suspensa-no-instagram/" target="_blank" rel="noopener">Revista Oeste: advogada de Bolsonaro</a><a href="https://www.aljazeera.com/news/2020/8/2/facebook-bows-to-brazil-court-order-bans-pro-bolsonaro-profiles" target="_blank" rel="noopener">Al Jazeera: bloqueio mundial em 2020</a><a href="https://www.poder360.com.br/brasil/nunes-marques-manda-meta-guardar-dados-de-perfis-que-atacaram-flavio/" target="_blank" rel="noopener">Poder360: queixa do PL</a></span>
+</section>
+
+<section aria-labelledby="h-meta">
+  <h2 id="h-meta">O que a Meta diz e o que o TSE pediu</h2>
+  <div class="two">
+    <div class="card" style="--c:var(--no)"><h3>Quem acusa a Meta diz</h3><ul>
+      <li>A campanha de Lula fala em um “padrão” de quedas de alcance, bloqueio de anúncios e falta de explicação.</li>
+      <li>Um relatório do PT diz que a página de Flávio tem mais engajamento que a de Lula, mesmo com menos seguidores.</li>
+      <li>Influenciadores derrubados dizem que não sabem qual regra quebraram e que não conseguem recorrer na própria plataforma.</li>
+    </ul></div>
+    <div class="card" style="--c:var(--accent)"><h3>A Meta diz</h3><ul>
+      <li>As acusações são “simplesmente falsas”, e as regras valem igual para todos.</li>
+      <li>A mesma limitação de recomendação vale para os perfis de Lula e de Flávio.</li>
+      <li>Parte dos casos foram falhas no mundo todo. O bloqueio dos anúncios de Lula foi erro de um filtro contra golpes, que ficou mais rígido depois de um acordo com a AGU em abril de 2026.</li>
+    </ul></div>
+  </div>
+  <div class="card">
+    <h3>O que o TSE pediu em 10 de outubro</h3>
+    <p>O ministro Bellizze deu 48 horas para a Meta explicar alcance, recomendações, bloqueios e anúncios. Em 12 de outubro a Meta disse que cumpriu tudo, mas ainda faltavam:</p>
+    <ul style="margin:0;padding-left:20px;display:grid;gap:6px;font-size:17px;line-height:1.5">
+      <li>a lista das restrições aplicadas aos perfis de Lula desde 16 de agosto;</li>
+      <li>as datas em que os filtros foram ligados para cada candidatura;</li>
+      <li>os números de alcance que provariam que os vídeos continuaram sendo entregues;</li>
+      <li>se os anúncios de Flávio passaram pelas mesmas checagens.</li>
+    </ul>
+    <p>São exatamente os dados que permitiriam comparar os dois lados.</p>
+  </div>
+  <span class="src"><a href="https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/tse-manda-meta-esclarecer-restricoes-postagens-da-campanha-de-lula" target="_blank" rel="noopener">Agência Brasil: pedido do TSE</a><a href="https://revistaforum.com.br/tecnologia/meta-nao-entregou-dados-lula/" target="_blank" rel="noopener">Revista Fórum: defesa da Meta</a><a href="https://www.correiodamanha.com.br/politica/2026/10/326073-campanha-de-lula-acusa-meta-de-favorecer-flavio-bolsonaro-nas-redes.html" target="_blank" rel="noopener">Correio da Manhã: acusação e resposta</a></span>
+</section>
+
+<section aria-labelledby="h-vf">
+  <h2 id="h-vf">É verdade?</h2>
+  <div class="vf">
+    <div class="vfi"><span class="badge v">Verdade</span><p><b>“A Meta derrubou as contas do Jones Manoel.”</b> Instagram e Facebook saíram do ar em 6 de agosto de 2025 e voltaram dois dias depois, sem explicação nas duas vezes.</p></div>
+    <div class="vfi"><span class="badge v">Verdade</span><p><b>“A Meta bloqueou os anúncios da campanha de Lula.”</b> A própria Meta admitiu ao TSE que desativou a conta de anúncios por engano em 23 de setembro de 2026. Ela diz que a conta voltou em cerca de uma hora.</p></div>
+    <div class="vfi"><span class="badge f">Falso</span><p><b>“Lula foi banido do Instagram.”</b> Em dezembro de 2025 os perfis de Lula e de petistas sumiram da busca por algumas horas. A conta não foi banida.</p></div>
+    <div class="vfi"><span class="badge m">Meia verdade</span><p><b>“As contas derrubadas sempre voltam.”</b> Muitas voltaram em horas. Chavoso da USP, Tiago Santineli e Bruna Santiago não tinham voltado nas últimas notícias, e no caso do Chavoso nem com liminar.</p></div>
+    <div class="vfi"><span class="badge f">Falso</span><p><b>“Só conta de esquerda é derrubada.”</b> Em 2020 o Facebook derrubou uma rede ligada aos gabinetes da família Bolsonaro, e contas de apoiadores foram bloqueadas no mundo todo por ordem do STF.</p></div>
+    <div class="vfi"><span class="badge o">Em aberto</span><p><b>“A Meta persegue a esquerda.”</b> Os casos existem, mas ninguém de fora tem a contagem dos dois lados. O TSE pediu os dados, e a Meta ainda não entregou tudo.</p></div>
+    <div class="vfi"><span class="badge o">Não demonstrado</span><p><b>“A Meta impulsiona as contas bolsonaristas.”</b> Não achamos dado que mostre isso. O único número público é um relatório do PT sobre engajamento, e engajamento alto pode vir dos próprios seguidores.</p></div>
+  </div>
+</section>
+
+<section aria-labelledby="h-resumo">
+  <div class="verdict">
+    <h2 id="h-resumo">Resumindo</h2>
+    <ul>
+      <li>Contas grandes de esquerda foram derrubadas pela <b>própria Meta</b>, quase sempre sem dizer qual regra foi quebrada.</li>
+      <li>A maioria <b>voltou em horas</b>, e em vários casos a Meta admitiu o erro. Três influenciadores não tinham voltado nas últimas notícias.</li>
+      <li>Nos casos de direita que achamos, as remoções vieram mais da <b>Justiça</b> do que da Meta.</li>
+      <li>Para saber se há perseguição, falta o principal: <b>quantas contas de cada lado</b> caíram e por quê. O TSE pediu esses dados.</li>
+    </ul>
+  </div>
+</section>
+
+<details class="mais">
+  <summary>Quer ver todos os casos numa tabela? Toque aqui</summary>
+  <div class="mais-body">
+    <h3>Contas derrubadas, bloqueadas ou escondidas pela Meta</h3>
+    <div class="tbl"><table>
+      <tr><th>Data</th><th>Conta</th><th>O que houve</th><th>Motivo dado</th><th>Como ficou</th></tr>
+      <tr><td>20/06/2024</td><td>Marquito (PSOL-SC)</td><td>Instagram suspenso</td><td>Genérico, segundo ele</td><td>Liminar mandou devolver</td></tr>
+      <tr><td>jul/2025</td><td>Bruna Santiago, 3 perfis</td><td>Desativados</td><td>Conteúdo sexual; ligação com conta banida</td><td>Fora em nov/2025</td></tr>
+      <tr><td>06/08/2025</td><td>Jones Manoel</td><td>Instagram e Facebook excluídos</td><td>“Padrões da plataforma”</td><td>Voltou em 08/08/2025</td></tr>
+      <tr><td>out/2025</td><td>Tiago Santineli</td><td>Instagram suspenso</td><td>Não informado</td><td>Fora em nov/2025</td></tr>
+      <tr><td>16/11/2025</td><td>Chavoso da USP e reserva</td><td>Desativadas</td><td>“Padrões da comunidade”</td><td>Liminar em 20/11; fora em dez/2025</td></tr>
+      <tr><td>09–10/12/2025</td><td>Lula, PT, PSOL e outros</td><td>Sumiço na busca e queda de alcance</td><td>Falha técnica global</td><td>Voltou no mesmo dia</td></tr>
+      <tr><td>23/09/2026</td><td>Anúncios da campanha de Lula</td><td>Conta de anúncios desativada</td><td>Erro do filtro contra golpes</td><td>Voltou em cerca de 1 hora</td></tr>
+      <tr><td>23/09/2026</td><td>Revelando Brasil</td><td>Perfil removido</td><td>“Não segue os padrões”</td><td>Voltou no mesmo dia</td></tr>
+      <tr><td>23/09/2026</td><td>Igreja Alternativa</td><td>Perfil desativado</td><td>Erro, admitido depois</td><td>Voltou</td></tr>
+      <tr><td>07/10/2026</td><td>Vídeos de Lula</td><td>Visualizações zeradas</td><td>Defeito global dos Reels</td><td>Normalizou</td></tr>
+      <tr><td>09–10/10/2026</td><td>Perfil de Lula</td><td>Sem impulsionamento</td><td>Meta nega a acusação</td><td>Voltou no dia seguinte</td></tr>
+    </table></div>
+    <h3>Um caso sem lado político</h3>
+    <p>Em 17 e 18 de outubro de 2025, a Meta derrubou cerca de 50 perfis ligados à cannabis, como a Marcha da Maconha e associações de pacientes. Pelo menos 20 voltaram dois dias depois, e a empresa admitiu ao governo que errou. O caso mostra que os filtros da Meta também erram sem motivo político.</p>
+    <span class="src"><a href="https://apublica.org/2025/10/cannabis-instagram-meta-suspende-perfis-sem-justificativa/" target="_blank" rel="noopener">Agência Pública</a></span>
+    <h3>A ligação com Washington</h3>
+    <p>Em janeiro de 2025, Mark Zuckerberg anunciou o fim da checagem de fatos terceirizada nos EUA e disse que trabalharia com Trump contra governos que “censuram” empresas americanas, citando tribunais da América Latina. Isso não prova que a Meta agiu a mando do governo Trump no Brasil. Essa parte da história está na <a href="https://fcarvalhodev.github.io/rota-washington/bigtechs.html">Rota Washington</a>.</p>
+  </div>
+</details>
+
+<footer>
+  <p>Cada caso traz o link da reportagem de onde saiu.</p>
+  <p>Atualizado em 14 de outubro de 2026.</p>
+</footer>
+
+<section id="fontes-revisao" aria-labelledby="h-fontes-revisao" style="margin-block:32px;padding:20px;border:1px solid var(--line);border-radius:6px">
+<h2 id="h-fontes-revisao">Fontes e limites da leitura</h2>
+<p>A lista reúne casos noticiados com nome e data, e não é uma contagem completa. Casos de quem tem menos visibilidade ficam de fora, dos dois lados. Queda de alcance, perda de seguidores ou conta devolvida, sozinhas, não mostram intenção política. Para isso é preciso comparar contas, períodos, regras aplicadas e registros técnicos. A negativa da Meta também não substitui essa verificação. O status de cada conta vale até a última notícia encontrada.</p>
+<p style="font-size:14px"><a href="https://fcarvalhodev.github.io/rotas/metodologia.html">Como distinguimos fatos, alegações e interpretações</a> · Revisão editorial: 14 de outubro de 2026.</p>
+</section>
+</main>
+
+</body></html>
