@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Algorithm Route</title>
+<meta name="description" content="The left-right comparison on Meta, explained simply: accounts banned on each side, the 1,121 reports of restrictions on Lula supporters, Nikolas Ferreira's off-the-charts engagement, what Meta says and what the TSE asked for.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: the Rotas skeleton in the easy-reading format. The Algoritmo route colour is indigo. Order: question, short answer, four ways an account disappears, the cases, the count, why a list is not a pattern, the other side, what Meta says and what the TSE asked, true or false, summary, all the cases. */
+:root{
+  --bg:#f1f1f5; --paper:#fbfbfd; --ink:#1b1b24; --muted:#5b5b6b; --line:#d5d5e0; --soft:#e6e6ee;
+  --accent:#4338ca; --accent-soft:#e0e1fa;
+  --court:#8a6512; --court-soft:#f4ead2; --gray:#8a8c92;
+  --ok:#1f6b45; --ok-soft:#dcefe3; --no:#a12a2a; --no-soft:#f6dede; --part:#7a5a00; --part-soft:#f6ebc9; --open:#6b5bb5; --open-soft:#e8e5f6;
+  --display:"Archivo","Arial Narrow",Impact,sans-serif;
+  --ui:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --text:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121218; --paper:#1a1a22; --ink:#ebebf2; --muted:#a5a5b5; --line:#2e2e3a; --soft:#24242e;
+  --accent:#a5b4fc; --accent-soft:#1f2147;
+  --court:#e0b552; --court-soft:#3a2e14; --gray:#6e7077;
+  --ok:#7fd3a3; --ok-soft:#173326; --no:#f19b9b; --no-soft:#3a1c1c; --part:#e8c25a; --part-soft:#3a3016; --open:#a99cf0; --open-soft:#29254a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121218; --paper:#1a1a22; --ink:#ebebf2; --muted:#a5a5b5; --line:#2e2e3a; --soft:#24242e;
+  --accent:#a5b4fc; --accent-soft:#1f2147;
+  --court:#e0b552; --court-soft:#3a2e14; --gray:#6e7077;
+  --ok:#7fd3a3; --ok-soft:#173326; --no:#f19b9b; --no-soft:#3a1c1c; --part:#e8c25a; --part-soft:#3a3016; --open:#a99cf0; --open-soft:#29254a; color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:19px;line-height:1.7}
+a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:880px;margin:0 auto;padding-inline:16px}
+.kicker,.mono{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.kicker{color:var(--accent)}
+h1{font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(46px,11vw,104px);line-height:.9;margin:0;text-transform:uppercase;overflow-wrap:anywhere}
+h2{font-family:var(--display);font-stretch:66%;font-weight:800;font-size:clamp(34px,7vw,52px);line-height:.95;margin:0;text-transform:uppercase;text-wrap:balance}
+h3{font-family:var(--ui);font-weight:700;font-size:22px;line-height:1.2;margin:0;text-wrap:balance}
+p{margin:0}
+header,section{display:grid;grid-template-columns:minmax(0,1fr)}
+header{padding-block:40px 8px;gap:18px}
+section{padding-block:48px 8px;gap:18px}
+.lg{font-size:21px;line-height:1.6}
+.sub{color:var(--muted);max-width:62ch}
+.src{font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:2px 14px;line-height:1.5}
+.src a{color:var(--muted)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:20px;display:grid;gap:12px;align-content:start}
+.answer-box{background:var(--accent-soft);border:2px solid var(--accent);border-radius:6px;padding:20px;margin-top:40px}
+.note{font-size:16px;color:var(--muted)}
+.rv-btn{display:inline-flex;align-items:center;gap:8px;justify-self:start;font-family:var(--ui);font-weight:800;font-size:16px;letter-spacing:.02em;text-decoration:none;color:var(--paper);background:var(--accent);padding:10px 16px;border-radius:999px;box-shadow:0 2px 0 rgba(0,0,0,.15)}
+.rv-btn:hover{filter:brightness(1.08)}
+
+/* four ways */
+.path{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;align-items:stretch}
+.stop{background:var(--paper);border:2px solid var(--accent);border-radius:8px;padding:14px 10px;display:grid;gap:6px;justify-items:center;text-align:center;align-content:start}
+.stop .emo{font-size:40px;line-height:1}
+.stop b{font-family:var(--ui);font-size:17px;line-height:1.2}
+.stop span{font-size:15px;color:var(--muted);line-height:1.4}
+.stop.court{border-color:var(--court);background:var(--court-soft)}
+.stop.court b{color:var(--court)}
+.who-decides{display:grid;grid-template-columns:1fr 3fr;gap:8px;font-family:var(--ui);font-weight:700;font-size:15px;text-align:center}
+.who-decides span{padding:6px;border-radius:4px}
+.who-decides .j{background:var(--court-soft);color:var(--court)}
+.who-decides .m{background:var(--accent-soft);color:var(--accent)}
+
+/* cases */
+.cases{display:grid;gap:12px}
+.case{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--c,var(--accent));border-radius:6px;padding:16px 18px;display:grid;grid-template-columns:120px minmax(0,1fr);gap:4px 16px}
+.case .when{font-family:var(--mono);font-size:13px;color:var(--muted);line-height:1.4;padding-top:4px}
+.case .bd{display:grid;gap:6px}
+.case h3{font-size:21px}
+.case .who{font-family:var(--ui);font-size:15px;color:var(--muted);line-height:1.3}
+.case p{font-size:17px;line-height:1.55}
+.case .chips{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.st{font-family:var(--ui);font-weight:800;font-size:13px;letter-spacing:.04em;text-transform:uppercase;padding:3px 10px;border-radius:999px;border:2px solid currentColor}
+.st.y{color:var(--ok);background:var(--ok-soft)}
+.st.n{color:var(--no);background:var(--no-soft)}
+.st.j{color:var(--court);background:var(--court-soft)}
+.st.g{color:var(--muted);background:var(--soft)}
+.why{font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.4}
+.group-t{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+
+/* count */
+.tally{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:6px;max-width:520px}
+.tally i{aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font-style:normal;font-family:var(--ui);font-weight:900;font-size:clamp(14px,3vw,22px);color:var(--paper)}
+.tally i.y{background:var(--ok)}
+.tally i.n{background:var(--no)}
+.leg{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--ui);font-weight:600;font-size:16px}
+.leg i{display:inline-block;width:16px;height:16px;border-radius:50%;background:var(--c);margin-right:6px;vertical-align:-2px}
+
+/* newspaper analogy */
+.jar{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.jar .card{border-top:6px solid var(--c)}
+.jar .card .emo{font-size:40px;line-height:1}
+.jar .card p{font-size:17px}
+.jar .card b{font-family:var(--ui);font-size:20px;line-height:1.3}
+
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.two .card{border-top:6px solid var(--c)}
+.two .card h3{font-size:20px}
+.two .card ul{margin:0;padding-left:20px;display:grid;gap:8px;font-size:17px;line-height:1.5}
+
+/* true or false */
+.vf{display:grid;gap:12px}
+.vfi{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:16px 18px;display:grid;gap:8px}
+.vfi p{font-size:18px}
+.badge{justify-self:start;font-family:var(--ui);font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase;padding:4px 12px;border-radius:999px}
+.badge.f{background:var(--no-soft);color:var(--no);border:2px solid var(--no)}
+.badge.m{background:var(--part-soft);color:var(--part);border:2px solid var(--part)}
+.badge.v{background:var(--ok-soft);color:var(--ok);border:2px solid var(--ok)}
+.badge.o{background:var(--open-soft);color:var(--open);border:2px solid var(--open)}
+
+/* de-para */
+.dp{width:100%;border-collapse:separate;border-spacing:0;background:var(--paper);border:1px solid var(--line);border-radius:6px;overflow:hidden;font-size:16px;line-height:1.45}
+.dp th,.dp td{padding:12px 12px;text-align:left;vertical-align:top;border-top:1px solid var(--line)}
+.dp thead th{border-top:none;font-family:var(--ui);font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase}
+.dp thead th.l{color:var(--no);background:var(--no-soft)}
+.dp thead th.r{color:var(--accent);background:var(--accent-soft)}
+.dp tbody th{font-family:var(--ui);font-weight:700;font-size:15px;width:24%}
+.dp .tg{display:inline-block;margin-top:6px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid currentColor}
+.dp .tg.d{color:var(--ok)}.dp .tg.a{color:var(--part)}.dp .tg.o{color:var(--open)}
+@media (max-width:640px){.dp,.dp thead,.dp tbody,.dp tr,.dp th,.dp td{display:block;width:100%}.dp thead{display:none}.dp tbody tr{border-top:2px solid var(--line)}.dp tbody th{background:var(--soft);width:100%}.dp td::before{content:attr(data-l);display:block;font-family:var(--ui);font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}.dp td.l::before{color:var(--no)}.dp td.r::before{color:var(--accent)}}
+/* bars */
+.tl{display:grid;gap:10px}
+.tr{display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.tr .lab{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-family:var(--ui);font-weight:700;font-size:17px}
+.tr .lab span{font-family:var(--mono);font-weight:500;font-size:13px;color:var(--muted)}
+.tr .t{height:30px;background:var(--soft);border-radius:3px;position:relative}
+.tr .f{position:absolute;inset:0 auto 0 0;background:var(--c);border-radius:3px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:var(--paper);font-family:var(--mono);font-weight:600;font-size:14px;white-space:nowrap}
+.tr .v{position:absolute;top:0;bottom:0;display:flex;align-items:center;font-family:var(--mono);font-weight:600;font-size:14px;color:var(--ink);white-space:nowrap}
+.verdict{background:var(--ink);color:var(--paper);border-radius:6px;padding:22px 20px;display:grid;gap:12px}
+.verdict h2{color:var(--paper)}
+.verdict ul{margin:0;padding-left:20px;display:grid;gap:8px;font-size:20px}
+details.mais{margin-top:44px;border:2px solid var(--line);border-radius:6px;background:var(--paper)}
+details.mais>summary{cursor:pointer;padding:18px 20px;font-family:var(--ui);font-weight:700;font-size:19px;list-style:none;display:flex;justify-content:space-between;gap:12px}
+details.mais>summary::after{content:"+";font-family:var(--mono);font-size:24px;line-height:1}
+details.mais[open]>summary::after{content:"−"}
+details.mais>summary::-webkit-details-marker{display:none}
+.mais-body{padding:0 20px 20px;font-size:17px;line-height:1.6;display:grid;gap:14px}
+.tbl{overflow-x:auto}
+.mais-body table{width:100%;border-collapse:collapse;font-size:15px;min-width:560px}
+.mais-body th,.mais-body td{text-align:left;padding:8px 6px;border-top:1px solid var(--line);vertical-align:top}
+.mais-body th{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.mais-body td:first-child{font-family:var(--mono);white-space:nowrap;font-size:13px}
+footer{padding-block:44px 60px;color:var(--muted);font-size:14px;display:grid;gap:8px}
+@media (max-width:640px){.path{grid-template-columns:repeat(2,minmax(0,1fr))}.who-decides{grid-template-columns:1fr}.case{grid-template-columns:minmax(0,1fr)}.case .when{padding-top:0}}
+</style>
+</head><body>
+
+
+<style>/* barra comum das Rotas */.rotas-bar .rb-lang{margin-left:auto;color:var(--accent);font-weight:600}.rotas-bar{border-bottom:1px solid var(--line);background:var(--bg);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}.rotas-bar>div{max-width:880px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}.rotas-bar a{color:var(--muted);text-decoration:none;padding-block:2px;border-bottom:2px solid transparent}.rotas-bar a:hover{color:var(--ink)}.rotas-bar a[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}.rotas-bar .rb-home{color:var(--accent);font-weight:600}.rotas-bar a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}</style><style>/* padrão das Rotas: formato fácil */body{font-size:19px;line-height:1.7}h1{font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(46px,11vw,104px);line-height:.9;text-transform:uppercase;overflow-wrap:anywhere}h2{font-family:var(--display);font-stretch:66%;font-weight:800;font-size:clamp(34px,7vw,52px);line-height:.95;text-transform:uppercase}</style><nav class="rotas-bar" aria-label="Routes"><div><a class="rb-home" href="https://fcarvalhodev.github.io/rotas/en/">Routes</a><a href="https://fcarvalhodev.github.io/rota-washington/en/">Washington</a><a href="https://fcarvalhodev.github.io/rota-master/en/">Master</a><a href="https://fcarvalhodev.github.io/rota-curitiba/en/">Curitiba</a><a href="https://fcarvalhodev.github.io/rota-da-fe/en/">Faith</a><a href="https://fcarvalhodev.github.io/rota-esplanada/en/">Esplanada</a><a href="https://fcarvalhodev.github.io/rota-itamaraty/en/">Itamaraty</a><a href="https://fcarvalhodev.github.io/rota-da-picanha/en/">Picanha</a><a href="https://fcarvalhodev.github.io/rota-do-ibge/en/">IBGE</a><a href="https://fcarvalhodev.github.io/rota-velho-chico/en/">Velho Chico</a><a href="https://fcarvalhodev.github.io/rota-do-tesouro/en/">Treasury</a><a href="https://fcarvalhodev.github.io/rota-rouanet/en/">Rouanet</a><a href="https://fcarvalhodev.github.io/rota-dos-ventos/en/">Winds</a><a href="https://fcarvalhodev.github.io/rota-do-algoritmo/en/" aria-current="page">Algorithm</a><a class="rb-lang" href="../" hreflang="pt-BR" lang="pt-BR">PT</a></div></nav>
+<header class="wrap">
+  <div class="kicker">Algorithm Route</div>
+  <h1>Does Meta take down more left-wing accounts?</h1>
+  <p class="lede lg">On one side, left-wing profiles banned without explanation and more than a thousand reports of restrictions on Lula supporters. On the other, Nikolas Ferreira with more engagement than any Brazilian celebrity. Meta denies favoring anyone. Here is the comparison, side by side, with the same standard.</p>
+  <a class="rv-btn" href="visual.html"><span aria-hidden="true">📊</span> See the summary in icons</a>
+</header>
+
+<main class="wrap">
+
+<section class="answer-box" aria-labelledby="h-curta">
+  <h2 id="h-curta">The short answer</h2>
+  <p class="lg">It cannot be proven yet, but the signs point more to one side. Large left-wing accounts were banned by Meta itself, and one organization gathered 1,121 reports of restrictions on Lula supporters during the campaign. On the right, we found few cases and no similar survey. Nikolas Ferreira's engagement is off the charts, but that alone does not prove a push from Meta. The key piece is missing: Meta's own data, which the TSE (Brazil's electoral court) requested and the company has not yet fully delivered.</p>
+</section>
+
+<section aria-labelledby="h-jeitos">
+  <h2 id="h-jeitos">Four ways an account can disappear</h2>
+  <p class="sub lg">Not every account that disappears was Meta's choice. Before comparing cases, we need to know who decided:</p>
+  <div class="path">
+    <div class="stop court"><span class="emo" aria-hidden="true">⚖️</span><b>Court order</b><span>A judge orders it taken down. The company only complies.</span></div>
+    <div class="stop"><span class="emo" aria-hidden="true">📕</span><b>Platform rule</b><span>Meta says the account broke its “community standards”.</span></div>
+    <div class="stop"><span class="emo" aria-hidden="true">🛠️</span><b>Error or glitch</b><span>A bot or a bug takes the account down, and later it comes back.</span></div>
+    <div class="stop"><span class="emo" aria-hidden="true">🔇</span><b>Less reach</b><span>The account stays up, but far fewer people see its posts.</span></div>
+  </div>
+  <div class="who-decides" aria-hidden="true"><span class="j">Who decides: the courts</span><span class="m">Who decides: Meta itself</span></div>
+  <p class="lg">This route covers the last three: what <b>Meta does on its own</b>. When the order comes from the courts, the question is a different one, and it is on the <a href="https://fcarvalhodev.github.io/rota-washington/en/bigtechs.html">Washington Route</a>.</p>
+</section>
+
+<section aria-labelledby="h-depara">
+  <h2 id="h-depara">The comparison</h2>
+  <p class="sub lg">The same questions for both sides. The label says how much is proven.</p>
+  <table class="dp">
+    <thead><tr><th></th><th class="l">Left</th><th class="r">Right</th></tr></thead>
+    <tbody>
+      <tr><th>Large accounts banned by Meta itself, 2025–2026</th>
+        <td class="l" data-l="Left">Jones Manoel, Chavoso da USP, Tiago Santineli, Bruna Santiago, Revelando Brasil, Igreja Alternativa. Three had not come back as of the latest news.<br><span class="tg d">Documented</span></td>
+        <td class="r" data-l="Right">Nikolas Ferreira's posts disappeared in August 2026, with no explanation from Meta or from the congressman. We found no other large right-wing profile banned by Meta in the period.<br><span class="tg d">Documented</span></td></tr>
+      <tr><th>Mass survey</th>
+        <td class="l" data-l="Left">1,121 reports of restrictions on pro-Lula profiles, gathered by CTRL+Z. Among them, 108 banned accounts.<br><span class="tg a">Allegation: unverified reports</span></td>
+        <td class="r" data-l="Right">We found no similar survey for right-wing profiles.<br><span class="tg o">No data</span></td></tr>
+      <tr><th>Restrictions on the presidential campaign</th>
+        <td class="l" data-l="Left">Lula's ad account deactivated “by mistake”, videos showing zero views, posts that could not be boosted.<br><span class="tg d">Documented; Meta admits part was an error</span></td>
+        <td class="r" data-l="Right">We found no complaint from Flávio's campaign about its own profiles or ads being blocked.<br><span class="tg o">No data</span></td></tr>
+      <tr><th>Reach and engagement</th>
+        <td class="l" data-l="Left">Sharp drops in reach reported in December 2025 and during the campaign. Lula ranks below PL city councilors in Zeeng's engagement ranking.<br><span class="tg d">Ranking documented; drops reported</span></td>
+        <td class="r" data-l="Right">Nikolas has the highest average interactions on Brazilian Instagram, above Virgínia Fonseca. His Pix video got about 300 million views in two days.<br><span class="tg d">Numbers documented</span></td></tr>
+      <tr><th>Removals beyond what the court ordered</th>
+        <td class="l" data-l="Left">The TSE ordered 3 posts by federal civil servants criticizing Flávio taken down, and Meta took down 13, according to the group. CTRL+Z says Meta also acted on its own against at least 16 profiles that Flávio's campaign had asked the TSE to suspend.<br><span class="tg a">Allegation</span></td>
+        <td class="r" data-l="Right">We found no similar case.<br><span class="tg o">No data</span></td></tr>
+      <tr><th>Is Meta pushing one side?</th>
+        <td class="l" data-l="Left">Suspicion that Meta hides the left.<br><span class="tg o">Open</span></td>
+        <td class="r" data-l="Right">Suspicion that Meta boosts the right.<br><span class="tg o">Not shown</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">Court orders against right-wing profiles, such as the 2020 blocks in the fake news inquiry, are not included here because they are not Meta's decision. They are on the <a href="https://fcarvalhodev.github.io/rota-washington/en/bigtechs.html">Washington Route</a>.</p>
+</section>
+
+<section aria-labelledby="h-casos">
+  <h2 id="h-casos">Bans: the left</h2>
+  <p class="sub lg">Left-wing accounts, or accounts critical of Bolsonaro's movement, that Meta took down, blocked or hid, by date. Only cases reported in the news with a name and a date are included.</p>
+
+  <div class="group-t">2024 e 2025</div>
+  <div class="cases">
+    <div class="case"><div class="when">Jun 20, 2024</div><div class="bd"><h3>Marquito</h3><span class="who">PSOL state representative in Santa Catarina</span><p>His Instagram was suspended “with no prior notice and generic justifications”, he says. The next day, a judge ordered Meta to restore the account within 24 hours.</p><div class="chips"><span class="st j">Restored by court order</span></div><span class="src"><a href="https://www.nsctotal.com.br/?p=7201763" target="_blank" rel="noopener">NSC Total</a></span></div></div>
+    <div class="case"><div class="when">Jul 2025</div><div class="bd"><h3>Bruna Santiago</h3><span class="who">writer · 3 profiles, including @leituraspretas, with 39,600 followers</span><p>The three profiles went down at the same time. Meta cited sexual content on her personal profile and said the others were linked to an already banned account. She went to court.</p><div class="chips"><span class="st n">Not back as of Nov 2025</span></div><span class="src"><a href="https://brasildefato.com.br/2025/11/27/ofensiva-contra-vozes-progressistas-chavoso-da-usp-santineli-e-bruna-santiago-denunciam-censura-da-meta-apos-contas-banidas/" target="_blank" rel="noopener">Brasil de Fato</a></span></div></div>
+    <div class="case"><div class="when">Aug 6, 2025</div><div class="bd"><h3>Jones Manoel</h3><span class="who">historian and commentator · about 1 million followers</span><p>His Instagram and Facebook went offline at night, without warning. Meta only said the accounts did not follow its “platform standards”. On the morning of August 8 they came back, also without explanation.</p><div class="chips"><span class="st y">Back on Aug 8</span></div><span class="src"><a href="https://tvtnews.com.br/?p=759156" target="_blank" rel="noopener">TVT News: accounts taken down</a><a href="https://tvtnews.com.br/?p=759252" target="_blank" rel="noopener">TVT News: accounts restored</a></span></div></div>
+    <div class="case"><div class="when">Oct 2025</div><div class="bd"><h3>Tiago Santineli</h3><span class="who">comedian · about 850,000 followers</span><p>The account was suspended after jokes about the death of American activist Charlie Kirk. He says it has been taken down four times. Meta did not comment.</p><div class="chips"><span class="st n">Not back as of Nov 2025</span></div><span class="src"><a href="https://brasildefato.com.br/2025/11/27/ofensiva-contra-vozes-progressistas-chavoso-da-usp-santineli-e-bruna-santiago-denunciam-censura-da-meta-apos-contas-banidas/" target="_blank" rel="noopener">Brasil de Fato</a><a href="https://www.indexoncensorship.org/2025/12/meta-bans-brazilian-left-wing-influencers/" target="_blank" rel="noopener">Index on Censorship</a></span></div></div>
+    <div class="case"><div class="when">Nov 16, 2025</div><div class="bd"><h3>Chavoso da USP</h3><span class="who">sociologist Thiago Torres · more than 1 million followers</span><p>The main account went down “for not following community standards”, without saying which rule. The backup account, with about 380,000 followers, went down days later, and so did a profile about police violence. On November 20 an injunction ordered the main account restored. As of December 12, Meta had not complied.</p><div class="chips"><span class="st n">Not back as of Dec 2025</span></div><span class="src"><a href="https://www.poder360.com.br/poder-gente/chavoso-da-usp-influenciador-de-esquerda-tem-conta-desativada-no-instagram/" target="_blank" rel="noopener">Poder360</a><a href="https://brasildefato.com.br/2025/11/27/ofensiva-contra-vozes-progressistas-chavoso-da-usp-santineli-e-bruna-santiago-denunciam-censura-da-meta-apos-contas-banidas/" target="_blank" rel="noopener">Brasil de Fato</a><a href="https://www.indexoncensorship.org/2025/12/meta-bans-brazilian-left-wing-influencers/" target="_blank" rel="noopener">Index on Censorship: injunction</a></span></div></div>
+    <div class="case"><div class="when">Dec 9–10, 2025</div><div class="bd"><h3>Lula, PT and PSOL vanish from search</h3><span class="who">profiles of left-wing politicians, journalists and movements</span><p>Profiles stopped showing up in Instagram search and had sharp drops in reach, right after Glauber Braga's protest in the Chamber of Deputies. Meta said it was a worldwide technical glitch that also hit the right, and apologized. PSOL and Fenaj, the journalists' federation, took the case to federal prosecutors.</p><div class="chips"><span class="st y">Back the same day</span><span class="why">Reason given: global technical glitch</span></div><span class="src"><a href="https://atarde.com.br/brasil/meta-se-pronuncia-apos-sumico-de-perfis-de-lula-e-liderancas-do-pt-1371848" target="_blank" rel="noopener">A Tarde: Meta's response</a><a href="https://www.congressoemfoco.com.br/noticia/114781/psol-denuncia-a-meta-ao-mpf-por-reduzir-alcance-de-perfis-de-esquerda" target="_blank" rel="noopener">Congresso em Foco: PSOL and Fenaj</a></span></div></div>
+  </div>
+
+  <div class="group-t">2026, during the campaign</div>
+  <div class="cases">
+    <div class="case"><div class="when">Sep 23, 2026</div><div class="bd"><h3>Lula's campaign ad account</h3><span class="who">the account that pays for the candidate's ads</span><p>It was deactivated. Meta admitted to the TSE that it was a mistake: an ad was mistaken for a fake social program scam. The company says the account came back in about an hour.</p><div class="chips"><span class="st y">Back in about 1 hour</span><span class="why">Reason given: anti-scam filter error</span></div><span class="src"><a href="https://revistaforum.com.br/tecnologia/meta-nao-entregou-dados-lula/" target="_blank" rel="noopener">Revista Fórum: Meta's defense at the TSE</a></span></div></div>
+    <div class="case"><div class="when">Sep 23, 2026</div><div class="bd"><h3>Revelando Brasil</h3><span class="who">profile that posted a video by Fabio Porchat about the Banco Master case</span><p>Taken down for “not following” Instagram's standards. Hours later, Meta restored it and apologized.</p><div class="chips"><span class="st y">Back the same day</span></div><span class="src"><a href="https://www.diariodepernambuco.com.br/politica/2026/09/11724707-caso-master-meta-recua-apos-remover-perfil-que-publicou-video-de-porchat.html" target="_blank" rel="noopener">Diario de Pernambuco</a></span></div></div>
+    <div class="case"><div class="when">Sep 23, 2026</div><div class="bd"><h3>Igreja Alternativa</h3><span class="who">church in Piracicaba (São Paulo state)</span><p>Deactivated after a video by its pastor criticizing how close some churches are to Bolsonaro's movement. Meta reviewed it, restored the account and admitted the error.</p><div class="chips"><span class="st y">Back</span><span class="why">Reason given: error</span></div><span class="src"><a href="https://ohoje.com/2026/09/26/meta-devolve-perfil-de-igreja-apos-suspensao-no-instagram-por-criticas-ao-bolsonarismo/" target="_blank" rel="noopener">O Hoje</a></span></div></div>
+    <div class="case"><div class="when">Oct 7, 2026</div><div class="bd"><h3>Lula's videos “zeroed”</h3><span class="who">the president's official Instagram profile</span><p>The videos showed zero or frozen view counts for a few hours. Meta says it was a Reels bug in more than 100 countries and that the videos kept being delivered. It did not show the numbers that would prove this.</p><div class="chips"><span class="st g">Bug, according to Meta</span></div><span class="src"><a href="https://revistaforum.com.br/tecnologia/meta-nao-entregou-dados-lula/" target="_blank" rel="noopener">Revista Fórum: Meta's defense at the TSE</a></span></div></div>
+    <div class="case"><div class="when">Oct 9–10, 2026</div><div class="bd"><h3>Lula unable to boost posts</h3><span class="who">the candidate's Instagram profile</span><p>According to the campaign, the profile could not pay to boost posts from Friday afternoon to Saturday morning. The campaign went to the TSE and to the ANPD, Brazil's data protection authority. Meta called the accusations “simply false”.</p><div class="chips"><span class="st y">Back the next day</span></div><span class="src"><a href="https://www.correiodamanha.com.br/politica/2026/10/326073-campanha-de-lula-acusa-meta-de-favorecer-flavio-bolsonaro-nas-redes.html" target="_blank" rel="noopener">Correio da Manhã</a></span></div></div>
+    <div class="case"><div class="when">Oct 13, 2026</div><div class="bd"><h3>Fonasefe</h3><span class="who">forum of federal civil servants' unions</span><p>At Flávio's request, the TSE ordered posts criticizing him on public services taken down. According to the group, the decision named 3 posts, and Meta removed 13 on its own. Meta did not comment.</p><div class="chips"><span class="st n">10 extra posts, according to the group</span></div><span class="src"><a href="https://brasildefato.com.br/2026/10/13/alem-da-determinacao-do-tse-meta-remove-13-postagens-com-criticas-a-flavio-bolsonaro-sobre-servico-publico" target="_blank" rel="noopener">Brasil de Fato</a></span></div></div>
+  </div>
+</section>
+
+<section aria-labelledby="h-conta">
+  <h2 id="h-conta">The left: did they come back?</h2>
+  <p class="sub lg">Of the 10 cases above in which an account went down or was blocked (the video bug and the Fonasefe posts are left out):</p>
+  <div class="card">
+    <div class="tally" role="img" aria-label="10 dots: 7 green for accounts that came back and 3 red for accounts that had not come back as of the latest news"><i class="y">✓</i><i class="y">✓</i><i class="y">✓</i><i class="y">✓</i><i class="y">✓</i><i class="y">✓</i><i class="y">✓</i><i class="n">✕</i><i class="n">✕</i><i class="n">✕</i></div>
+    <div class="leg"><span style="--c:var(--ok)"><i></i>7 came back</span><span style="--c:var(--no)"><i></i>3 had not come back as of the latest news</span></div>
+    <p class="note">Of the 7 that came back, 6 were restored by Meta itself, almost always within hours. Only one came back by court order. The 3 that did not come back belong to commentators, not politicians: Chavoso da USP, Tiago Santineli and Bruna Santiago. We found no more recent news about them.</p>
+  </div>
+</section>
+
+<section aria-labelledby="h-ctrlz">
+  <h2 id="h-ctrlz">The 1,121 reports</h2>
+  <p class="sub lg">CTRL+Z, an organization that holds big tech accountable, opened a form for anyone whose pro-Lula profile or post was restricted on Meta during the campaign. As of October 13, there were 1,121 reports. They break down like this:</p>
+  <div class="card tl" id="ctrlz" role="img" aria-label="Types of restriction in the 1,121 reports: 36.8% reduced reach, 32% blocked features, 22% removed posts or accounts, of which about 10% are banned accounts"></div>
+  <p class="lg">In numbers: about <b>412</b> are about reduced reach, <b>359</b> about blocked features and <b>247</b> about removed posts or accounts. Of these, <b>108</b> are entire accounts banned. The reports include Lula's official profile, with 16.9 million followers.</p>
+  <div class="two">
+    <div class="card" style="--c:var(--ok)"><h3>What the survey shows</h3><ul>
+      <li>Many people on the same side reporting the same kind of problem, in the same period.</li>
+      <li>Most of it is about reach and features, not bans.</li>
+    </ul></div>
+    <div class="card" style="--c:var(--part)"><h3>What it does not show</h3><ul>
+      <li>These are reports sent by the people themselves. CTRL+Z has not explained how it checks each one.</li>
+      <li>There is no equivalent survey for right-wing profiles, so no comparison is possible.</li>
+    </ul></div>
+  </div>
+  <p class="note">Meta responded that there were “technical failures” in posts and ads from Lula's campaign, but that the accusation of favoring Flávio “is false, it has not been demonstrated”.</p>
+  <span class="src"><a href="https://revistaforum.com.br/revista-forum/meta-censura-perfis-apoio-lula/" target="_blank" rel="noopener">Revista Fórum: CTRL+Z survey</a><a href="https://tiraamao.ctrlz.org.br/" target="_blank" rel="noopener">CTRL+Z: report form</a></span>
+</section>
+
+<section aria-labelledby="h-direita">
+  <h2 id="h-direita">Bans: the right</h2>
+  <p class="sub lg">Same standard: only what Meta itself did, with a name and a date.</p>
+  <div class="cases">
+    <div class="case" style="--c:var(--accent)"><div class="when">Jul 2020</div><div class="bd"><h3>Network linked to the Bolsonaros' offices</h3><span class="who">35 accounts and 14 pages on Facebook, 38 accounts on Instagram</span><p>Facebook took down a network of fake accounts linked to the offices of Jair, Flávio and Eduardo Bolsonaro and to PSL lawmakers. The reason given was “coordinated inauthentic behavior”: fake profiles posing as people and news outlets.</p><div class="chips"><span class="st g">Removed</span><span class="why">Reason given: fake accounts</span></div><span class="src"><a href="https://congressoemfoco.com.br/tecnologia/facebook-remove-contas-ligadas-ao-psl-e-a-familia-bolsonaro" target="_blank" rel="noopener">Congresso em Foco</a></span></div></div>
+    <div class="case" style="--c:var(--accent)"><div class="when">Jun 2021</div><div class="bd"><h3>Karina Kufa</h3><span class="who">Jair Bolsonaro's lawyer at the Supreme Court · 20,000 followers</span><p>Her Instagram was suspended in the morning and restored in the afternoon, with no reason given.</p><div class="chips"><span class="st y">Back the same day</span></div><span class="src"><a href="https://revistaoeste.com/tecnologia/advogada-de-bolsonaro-tem-conta-suspensa-no-instagram/" target="_blank" rel="noopener">Revista Oeste</a></span></div></div>
+    <div class="case" style="--c:var(--accent)"><div class="when">Jan 13, 2023</div><div class="bd"><h3>Nikolas Ferreira</h3><span class="who">federal congressman-elect, PL, Minas Gerais</span><p>He said his Instagram was taken down for the second time, “without any kind of notification”, after a post about January 8. The report does not say whether it was Meta's decision or a court order, nor how long it lasted.</p><div class="chips"><span class="st g">No information</span></div><span class="src"><a href="https://www.itatiaia.com.br/politica/deputado-nikolas-ferreira-tem-instagram-suspenso-querem-me-calar" target="_blank" rel="noopener">Itatiaia</a></span></div></div>
+    <div class="case" style="--c:var(--accent)"><div class="when">Aug 14, 2026</div><div class="bd"><h3>Nikolas's posts vanish</h3><span class="who">Nikolas Ferreira's Instagram profile</span><p>On the eve of the campaign, almost all his posts and his profile photo disappeared. The PL in Minas Gerais called it “absurd”. Neither Meta nor the congressman's team explained why, and the press also raised the possibility of a marketing stunt. The launch video he posted right afterwards got 278,000 views in seven hours.</p><div class="chips"><span class="st g">Cause not explained</span></div><span class="src"><a href="https://www.em.com.br/politica/2026/08/7480742-perfil-de-nikolas-ferreira-no-instagram-sofre-apagao-de-publicacoes.html" target="_blank" rel="noopener">Estado de Minas</a><a href="https://www.gazetadopovo.com.br/eleicoes/2026/censura-ou-estrategia-nikolas-publica-video-que-viraliza-apos-apagao-dos-posts-no-instagram/" target="_blank" rel="noopener">Gazeta do Povo</a></span></div></div>
+  </div>
+</section>
+
+<section aria-labelledby="h-nikolas">
+  <h2 id="h-nikolas">Nikolas's engagement</h2>
+  <p class="sub lg">Engagement is the sum of likes and comments. Nikolas Ferreira has the highest average per post on Brazilian Instagram, ahead of Brazilian celebrities:</p>
+  <div class="card tl" id="nik" role="img" aria-label="Average interactions per post on Instagram, April 23 to 30, 2026: Nikolas Ferreira 1.85 million, Virgínia Fonseca 1.82 million, Bruna Marquezine 1.13 million"></div>
+  <p class="note">Week of April 23 to 30, 2026, ranking published by the Alfinetei profile. Among politicians, from January to June 2026, Zeeng measured 1.47 million per post for Nikolas, 500,000 for Michelle Bolsonaro, and Lula below PL city councilors. Zeeng counts eight PL politicians in the top ten.</p>
+  <span class="src"><a href="https://www.avozjundiai.com/2026/05/nikolas-ferreira-lidera-engajamento-no.html" target="_blank" rel="noopener">A Voz de Jundiaí: April ranking</a><a href="https://boainformacao.com.br/2026/07/nikolas-lidera-influencia-politica-no-instagram-segundo-zeeng/" target="_blank" rel="noopener">Boa Informação: Zeeng study</a></span>
+  <h3 style="margin-top:12px">And compared with the most-followed accounts in the world?</h3>
+  <p class="sub lg">Kim Kardashian has 15 times more followers than Nikolas. Even so, his estimated average interactions per post are about 4 times hers:</p>
+  <div class="card tl" id="mundo" role="img" aria-label="Estimated average interactions per post: Messi 7.8 million, Cristiano Ronaldo 5.6 million, Taylor Swift 4.4 million, Selena Gomez 2.4 million, Nikolas Ferreira 2.3 million, Neymar 2.1 million, Kylie Jenner 1.6 million, Beyoncé 1.4 million, Kim Kardashian 0.5 million"></div>
+  <div class="card">
+    <h3>Engagement rate: how many followers interact with each post</h3>
+    <div class="tbl"><table style="width:100%;border-collapse:collapse;font-size:16px">
+      <tr><th style="text-align:left;padding:6px">Profile</th><th style="text-align:right;padding:6px">Followers</th><th style="text-align:right;padding:6px">Rate</th></tr>
+      <tr><td style="padding:6px;border-top:1px solid var(--line)"><b>Nikolas Ferreira</b></td><td style="text-align:right;padding:6px;border-top:1px solid var(--line)">23.2 million</td><td style="text-align:right;padding:6px;border-top:1px solid var(--line)"><b>9.79%</b></td></tr>
+      <tr><td style="padding:6px;border-top:1px solid var(--line)">Cristiano Ronaldo</td><td style="text-align:right;padding:6px;border-top:1px solid var(--line)">679.9 million</td><td style="text-align:right;padding:6px;border-top:1px solid var(--line)">0.83%</td></tr>
+      <tr><td style="padding:6px;border-top:1px solid var(--line)">Messi</td><td style="text-align:right;padding:6px;border-top:1px solid var(--line)">517.6 million</td><td style="text-align:right;padding:6px;border-top:1px solid var(--line)">1.5%</td></tr>
+      <tr><td style="padding:6px;border-top:1px solid var(--line)">Selena Gomez</td><td style="text-align:right;padding:6px;border-top:1px solid var(--line)">402.8 million</td><td style="text-align:right;padding:6px;border-top:1px solid var(--line)">0.59%</td></tr>
+      <tr><td style="padding:6px;border-top:1px solid var(--line)">Kylie Jenner</td><td style="text-align:right;padding:6px;border-top:1px solid var(--line)">380.7 million</td><td style="text-align:right;padding:6px;border-top:1px solid var(--line)">0.42%</td></tr>
+      <tr><td style="padding:6px;border-top:1px solid var(--line)">Kim Kardashian</td><td style="text-align:right;padding:6px;border-top:1px solid var(--line)">343.8 million</td><td style="text-align:right;padding:6px;border-top:1px solid var(--line)">0.15%</td></tr>
+      <tr><td style="padding:6px;border-top:1px solid var(--line)">Beyoncé</td><td style="text-align:right;padding:6px;border-top:1px solid var(--line)">298.8 million</td><td style="text-align:right;padding:6px;border-top:1px solid var(--line)">0.47%</td></tr>
+      <tr><td style="padding:6px;border-top:1px solid var(--line)">Taylor Swift</td><td style="text-align:right;padding:6px;border-top:1px solid var(--line)">272.7 million</td><td style="text-align:right;padding:6px;border-top:1px solid var(--line)">1.61%</td></tr>
+      <tr><td style="padding:6px;border-top:1px solid var(--line)">Neymar</td><td style="text-align:right;padding:6px;border-top:1px solid var(--line)">241.9 million</td><td style="text-align:right;padding:6px;border-top:1px solid var(--line)">0.87%</td></tr>
+    </table></div>
+    <p class="note">The highest rate among the world's 15 most-followed accounts is 3.58%, that of Indian cricketer Virat Kohli. Nikolas's is almost 3 times higher than that, and about 65 times Kim Kardashian's.</p>
+  </div>
+  <p class="lg">This is off the charts, but with two caveats. Giant accounts always have lower rates, because many followers stop seeing their posts over time. And the numbers come from different tools, measured on different days in October 2026. The per-post average for the celebrities is our own calculation: followers times the rate.</p>
+  <span class="src"><a href="https://hubpolitico.com.br/perfil/nikolasferreira/seguidores" target="_blank" rel="noopener">Hub Político: Nikolas on 10/13/2026</a><a href="https://www.creatorsjet.com/top-300-instagram-influencers" target="_blank" rel="noopener">CreatorsJet: most-followed accounts on 10/11/2026</a><a href="https://www.visualcapitalist.com/ranked-the-most-followed-people-on-instagram-in-2026/" target="_blank" rel="noopener">Visual Capitalist: 2026 ranking</a></span>
+  <div class="two">
+    <div class="card" style="--c:var(--no)"><h3>Why it looks suspicious</h3><ul>
+      <li>The Pix video, in January 2025, got about <b>300 million views in two days</b>. Brazil has about 130 million Instagram accounts.</li>
+      <li>A week earlier, Meta had started <b>recommending political content</b> in the feed again, to people who do not follow the profile. It did not confirm whether the change was already in effect in Brazil.</li>
+      <li>A company in which Nikolas is a partner spent more than <b>R$745,000</b> on Meta ads between April 2024 and April 2025.</li>
+    </ul></div>
+    <div class="card" style="--c:var(--accent)"><h3>Why it is not proof</h3><ul>
+      <li>A view is not a person: the same person counts several times, and there are viewers outside Brazil.</li>
+      <li>Aos Fatos found no sign of paid boosting on the Pix video.</li>
+      <li>The recommendation of political content applies to all profiles, not only right-wing ones. A profile that already has a lot of engagement gains even more from it.</li>
+    </ul></div>
+  </div>
+  <p class="lg">What would prove a push from Meta: how many of Nikolas's views come from people who do <b>not</b> follow him, compared with left-wing profiles of the same size. Only Meta has that data.</p>
+  <span class="src"><a href="https://www.aosfatos.org/noticias/video-nikolas-ferreira-pix/" target="_blank" rel="noopener">Aos Fatos: how the Pix video went viral</a><a href="https://www.bnews.com.br/noticias/politica/petistas-culpam-meta-pelo-sucesso-do-video-de-nikolas-ferreira-entenda.html" target="_blank" rel="noopener">BNews: 300 million views and 130 million accounts</a><a href="https://vermelho.org.br/2025/07/08/nikolas-ferreira-gastou-r-750-mil-impulsionando-desinformacao-na-meta/" target="_blank" rel="noopener">Vermelho, with Intercept data: ads</a></span>
+</section>
+
+<section aria-labelledby="h-lista">
+  <h2 id="h-lista">Why a list does not prove persecution</h2>
+  <p class="sub lg">A list of cases shows that something happened. It does not show whether it happens more to one side than the other. Think of it like this:</p>
+  <div class="jar">
+    <div class="card" style="--c:var(--accent)"><span class="emo" aria-hidden="true">📰</span><b>We only see what makes the news</b><p>People with a lawyer, a friendly congressman or many followers can get into the paper. Small accounts that go down, on either side, almost never do.</p></div>
+    <div class="card" style="--c:var(--part)"><span class="emo" aria-hidden="true">🧮</span><b>The total is missing</b><p>To say “more”, we need to know how many left-wing and how many right-wing accounts were taken down in the same period, under the same rules. Only Meta has that number.</p></div>
+    <div class="card" style="--c:var(--open)"><span class="emo" aria-hidden="true">🔍</span><b>The reason is missing</b><p>Meta almost never says which post broke which rule. Without that, nobody can check whether the rule was the same for everyone.</p></div>
+  </div>
+  <p class="lg">This cuts both ways: the lack of data does not prove there is persecution, and it does not prove there is none.</p>
+</section>
+
+
+<section aria-labelledby="h-meta">
+  <h2 id="h-meta">What Meta says and what the TSE asked for</h2>
+  <div class="two">
+    <div class="card" style="--c:var(--no)"><h3>Meta's accusers say</h3><ul>
+      <li>Lula's campaign speaks of a “pattern” of reach drops, blocked ads and no explanations.</li>
+      <li>A PT report says Flávio's page has more engagement than Lula's, despite having fewer followers.</li>
+      <li>Influencers who were taken down say they do not know which rule they broke and cannot appeal on the platform itself.</li>
+    </ul></div>
+    <div class="card" style="--c:var(--accent)"><h3>Meta says</h3><ul>
+      <li>The accusations are “simply false”, and the rules apply equally to everyone.</li>
+      <li>The same recommendation limit applies to Lula's and Flávio's profiles.</li>
+      <li>Some of the cases were worldwide glitches. The block on Lula's ads was an error by an anti-scam filter that became stricter after an agreement with the Attorney General's Office (AGU) in April 2026.</li>
+    </ul></div>
+  </div>
+  <div class="card">
+    <h3>What the TSE asked for on October 10</h3>
+    <p>Justice Bellizze gave Meta 48 hours to explain reach, recommendations, blocks and ads. On October 12 Meta said it had complied fully, but these were still missing:</p>
+    <ul style="margin:0;padding-left:20px;display:grid;gap:6px;font-size:17px;line-height:1.5">
+      <li>the list of restrictions applied to Lula's profiles since August 16;</li>
+      <li>the dates on which the filters were switched on for each candidacy;</li>
+      <li>the reach numbers that would prove the videos kept being delivered;</li>
+      <li>whether Flávio's ads went through the same checks.</li>
+    </ul>
+    <p>These are exactly the data that would allow the two sides to be compared.</p>
+  </div>
+  <span class="src"><a href="https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/tse-manda-meta-esclarecer-restricoes-postagens-da-campanha-de-lula" target="_blank" rel="noopener">Agência Brasil: the TSE's request</a><a href="https://revistaforum.com.br/tecnologia/meta-nao-entregou-dados-lula/" target="_blank" rel="noopener">Revista Fórum: Meta's defense</a><a href="https://www.correiodamanha.com.br/politica/2026/10/326073-campanha-de-lula-acusa-meta-de-favorecer-flavio-bolsonaro-nas-redes.html" target="_blank" rel="noopener">Correio da Manhã: accusation and response</a></span>
+</section>
+
+<section aria-labelledby="h-vf">
+  <h2 id="h-vf">Is it true?</h2>
+  <div class="vf">
+    <div class="vfi"><span class="badge v">True</span><p><b>“Meta took down Jones Manoel's accounts.”</b> His Instagram and Facebook went offline on August 6, 2025 and came back two days later, with no explanation either time.</p></div>
+    <div class="vfi"><span class="badge m">Half true</span><p><b>“Meta banned more than a thousand accounts of Lula supporters.”</b> These are 1,121 reports of several kinds of restriction, most of them about reach and features. Banned accounts number 108. The reports were not verified one by one.</p></div>
+    <div class="vfi"><span class="badge v">True</span><p><b>“Meta blocked the Lula campaign's ads.”</b> Meta itself admitted to the TSE that it deactivated the ad account by mistake on September 23, 2026. It says the account came back in about an hour.</p></div>
+    <div class="vfi"><span class="badge f">False</span><p><b>“Lula was banned from Instagram.”</b> In December 2025 the profiles of Lula and PT members disappeared from search for a few hours. The account was not banned.</p></div>
+    <div class="vfi"><span class="badge v">True</span><p><b>“Nikolas has more engagement than Brazilian celebrities.”</b> In April 2026, his average per post beat Virgínia Fonseca's and Bruna Marquezine's.</p></div>
+    <div class="vfi"><span class="badge v">True</span><p><b>“Nikolas gets more engagement than Kim Kardashian.”</b> With 15 times fewer followers, he gets about 4 times more interactions per post, and an engagement rate about 65 times higher. The measurements come from different tools, but the gap is too large to be only that.</p></div>
+    <div class="vfi"><span class="badge m">Half true</span><p><b>“Nikolas's video had more views than there are Instagram users in Brazil.”</b> The numbers add up: about 300 million views and about 130 million accounts. But the same person counts several times and there are viewers abroad, so this alone does not prove fraud or a push.</p></div>
+    <div class="vfi"><span class="badge f">False</span><p><b>“Only left-wing accounts get taken down.”</b> Meta also took down a network linked to the Bolsonaro family's offices in 2020, and Nikolas's posts disappeared in 2026. But in the cases we found, the left shows up far more often.</p></div>
+    <div class="vfi"><span class="badge o">Open</span><p><b>“Meta persecutes the left.”</b> There are many cases and more than a thousand reports, but no Meta data comparing the two sides. The TSE asked for it, and Meta has not delivered all of it yet.</p></div>
+    <div class="vfi"><span class="badge o">Not shown</span><p><b>“Meta boosts Nikolas and the right.”</b> The engagement is off the charts, but we found no data showing Meta pushing it. To know, one would need to see how many of the views come from people who do not follow the profile.</p></div>
+  </div>
+</section>
+
+<section aria-labelledby="h-resumo">
+  <div class="verdict">
+    <h2 id="h-resumo">In short</h2>
+    <ul>
+      <li>On the left, large accounts were banned by <b>Meta itself</b>, almost always without saying which rule was broken. There are also <b>1,121 reports</b> of restrictions on Lula supporters, not yet verified.</li>
+      <li>On the right, we found <b>few cases</b> and no similar survey. The biggest was the disappearance of Nikolas's posts, still unexplained.</li>
+      <li><b>Nikolas</b>'s engagement is the highest on Brazilian Instagram and beats Kim Kardashian's, Beyoncé's and Kylie Jenner's per post. That raises suspicion, but does not prove a push from Meta.</li>
+      <li>To complete the comparison, the data that only Meta has is missing: <b>how many accounts on each side</b> were restricted and where the views come from. The TSE has asked for it.</li>
+    </ul>
+  </div>
+</section>
+
+<details class="mais">
+  <summary>Want to see all the cases in a table? Tap here</summary>
+  <div class="mais-body">
+    <h3>Left: accounts taken down, blocked or hidden by Meta</h3>
+    <div class="tbl"><table>
+      <tr><th>Date</th><th>Account</th><th>What happened</th><th>Reason given</th><th>Outcome</th></tr>
+      <tr><td>20/06/2024</td><td>Marquito (PSOL, Santa Catarina)</td><td>Instagram suspended</td><td>Generic, he says</td><td>Injunction ordered it restored</td></tr>
+      <tr><td>Jul 2025</td><td>Bruna Santiago, 3 profiles</td><td>Deactivated</td><td>Sexual content; link to a banned account</td><td>Down as of Nov 2025</td></tr>
+      <tr><td>06/08/2025</td><td>Jones Manoel</td><td>Instagram and Facebook deleted</td><td>“Platform standards”</td><td>Back on 08/08/2025</td></tr>
+      <tr><td>Oct 2025</td><td>Tiago Santineli</td><td>Instagram suspended</td><td>Not given</td><td>Down as of Nov 2025</td></tr>
+      <tr><td>16/11/2025</td><td>Chavoso da USP and backup</td><td>Deactivated</td><td>“Community standards”</td><td>Injunction on 11/20; down as of Dec 2025</td></tr>
+      <tr><td>09–10/12/2025</td><td>Lula, PT, PSOL and others</td><td>Vanished from search and lost reach</td><td>Global technical glitch</td><td>Back the same day</td></tr>
+      <tr><td>23/09/2026</td><td>Lula's campaign ads</td><td>Ad account deactivated</td><td>Anti-scam filter error</td><td>Back in about 1 hour</td></tr>
+      <tr><td>23/09/2026</td><td>Revelando Brasil</td><td>Profile removed</td><td>“Does not follow the standards”</td><td>Back the same day</td></tr>
+      <tr><td>23/09/2026</td><td>Igreja Alternativa</td><td>Profile deactivated</td><td>Error, admitted later</td><td>Back</td></tr>
+      <tr><td>07/10/2026</td><td>Lula's videos</td><td>Views showing zero</td><td>Global Reels bug</td><td>Back to normal</td></tr>
+      <tr><td>09–10/10/2026</td><td>Lula's profile</td><td>No boosting</td><td>Meta denies the accusation</td><td>Back the next day</td></tr>
+      <tr><td>13/10/2026</td><td>Fonasefe</td><td>13 posts removed; order named 3</td><td>Meta did not comment</td><td>The group's account</td></tr>
+    </table></div>
+    <h3>Right: accounts taken down or hidden by Meta</h3>
+    <div class="tbl"><table>
+      <tr><th>Date</th><th>Account</th><th>What happened</th><th>Reason given</th><th>Outcome</th></tr>
+      <tr><td>Jul 2020</td><td>Network linked to the Bolsonaros' offices</td><td>73 accounts and 14 pages removed</td><td>Coordinated fake accounts</td><td>Removed</td></tr>
+      <tr><td>Jun 2021</td><td>Karina Kufa</td><td>Instagram suspended</td><td>Not given</td><td>Back the same day</td></tr>
+      <tr><td>13/01/2023</td><td>Nikolas Ferreira</td><td>Instagram taken down</td><td>Not given</td><td>No information</td></tr>
+      <tr><td>14/08/2026</td><td>Nikolas Ferreira</td><td>Posts and photo vanish</td><td>None, from either party</td><td>No information</td></tr>
+    </table></div>
+    <h3>Average engagement per post on Instagram</h3>
+    <div class="tbl"><table>
+      <tr><th>Period</th><th>Profile</th><th>Source</th><th>Average</th></tr>
+      <tr><td>23–30/04/2026</td><td>Nikolas Ferreira</td><td>Alfinetei</td><td>1,849,883</td></tr>
+      <tr><td>23–30/04/2026</td><td>Virgínia Fonseca</td><td>Alfinetei</td><td>about 1.82 million</td></tr>
+      <tr><td>23–30/04/2026</td><td>Bruna Marquezine</td><td>Alfinetei</td><td>about 1.13 million</td></tr>
+      <tr><td>Jan–Jun 2026</td><td>Nikolas Ferreira (politicians)</td><td>Zeeng</td><td>1.47 million</td></tr>
+      <tr><td>Jan–Jun 2026</td><td>Michelle Bolsonaro (politicians)</td><td>Zeeng</td><td>about 500,000</td></tr>
+    </table></div>
+    <h3>A case with no political side</h3>
+    <p>On October 17 and 18, 2025, Meta took down about 50 cannabis-related profiles, such as the Marcha da Maconha and patients' associations. At least 20 came back two days later, and the company admitted to the government that it had made a mistake. The case shows that Meta's filters also make mistakes with no political motive.</p>
+    <span class="src"><a href="https://apublica.org/2025/10/cannabis-instagram-meta-suspende-perfis-sem-justificativa/" target="_blank" rel="noopener">Agência Pública</a></span>
+    <h3>The link with Washington</h3>
+    <p>In January 2025, Mark Zuckerberg announced the end of third-party fact-checking in the US and said he would work with Trump against governments that “censor” American companies, citing courts in Latin America. That does not prove Meta acted on the Trump administration's orders in Brazil. That part of the story is on the <a href="https://fcarvalhodev.github.io/rota-washington/en/bigtechs.html">Washington Route</a>.</p>
+  </div>
+</details>
+
+<footer>
+  <p>Every case and every number links to the report it came from. Sources are in Portuguese.</p>
+  <p>Updated on October 14, 2026.</p>
+</footer>
+
+<section id="fontes-revisao" aria-labelledby="h-fontes-revisao" style="margin-block:32px;padding:20px;border:1px solid var(--line);border-radius:6px">
+<h2 id="h-fontes-revisao">Sources and limits of this reading</h2>
+<p>The list gathers cases reported in the news with a name and a date, and is not a complete count. CTRL+Z's 1,121 reports are self-reported, and there is no equivalent survey for the right. Engagement rankings come from private companies, with their own methods. Cases involving people with less visibility are left out, on both sides. A drop in reach, a loss of followers or a restored account, on their own, do not show political intent. That requires comparing accounts, periods, rules applied and technical records. Meta's denial does not replace that verification either. Each account's status is as of the latest news we found.</p>
+<p style="font-size:14px"><a href="https://fcarvalhodev.github.io/rotas/en/metodologia.html">How we tell facts, allegations and interpretations apart</a> · Editorial review: October 14, 2026.</p>
+</section>
+</main>
+
+<script>
+(function(){
+const bars=(id,rows,max,fmt)=>{document.getElementById(id).innerHTML=rows.map(r=>{const w=r[2]/max*100,t=fmt(r);return `<div class="tr"><div class="lab">${r[0]}<span>${r[1]}</span></div><div class="t">${w<30?`<span class="f" style="--c:${r[3]};width:${w}%"></span><span class="v" style="left:calc(${w}% + 8px)">${t}</span>`:`<span class="f" style="--c:${r[3]};width:${w}%">${t}</span>`}</div></div>`}).join('')};
+bars('ctrlz',[["Reduced reach","includes vanishing from search",36.8,"var(--no)"],["Blocked features","such as boosting or posting",32,"var(--no)"],["Posts or accounts removed","",22,"var(--no)"],["Banned accounts only","108 accounts",9.6,"var(--ink)"]],40,r=>r[2].toLocaleString('en-US')+'%');
+bars('mundo',[["Messi","517.6M followers",7.8,"var(--gray)"],["Cristiano Ronaldo","679.9M",5.6,"var(--gray)"],["Taylor Swift","272.7M",4.4,"var(--gray)"],["Selena Gomez","402.8M",2.4,"var(--gray)"],["Nikolas Ferreira","23.2M",2.3,"var(--accent)"],["Neymar","241.9M",2.1,"var(--gray)"],["Kylie Jenner","380.7M",1.6,"var(--gray)"],["Beyoncé","298.8M",1.4,"var(--gray)"],["Kim Kardashian","343.8M",0.5,"var(--gray)"]],7.8,r=>r[2].toLocaleString('en-US',{minimumFractionDigits:1})+' mi');
+bars('nik',[["Nikolas Ferreira","federal congressman, PL, Minas Gerais",1.85,"var(--accent)"],["Virgínia Fonseca","influenciadora",1.82,"var(--gray)"],["Bruna Marquezine","atriz",1.13,"var(--gray)"]],1.85,r=>r[2].toLocaleString('en-US',{minimumFractionDigits:2})+' mi');
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Algorithm Route in icons</title>
+<meta name="description" content="The left-right comparison on Meta, in icons: accounts banned on each side, the 1,121 reports, Nikolas Ferreira's engagement and the data the TSE asked for.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fcarvalhodev.github.io/rotas/visual/visual.css">
+<style>
+:root{--accent:#4338ca;--hero:#3730a3}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--accent:#a5b4fc;--hero:#3730a3}}
+:root[data-theme="dark"]{--accent:#a5b4fc;--hero:#3730a3}
+.hero{background:var(--hero);border-color:var(--hero)}.hero .go a{color:var(--hero)}
+</style>
+</head><body>
+<style>/* barra comum das Rotas */.rotas-bar .rb-lang{margin-left:auto;color:var(--accent);font-weight:600}.rotas-bar{border-bottom:1px solid var(--line);background:var(--bg);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}.rotas-bar>div{max-width:880px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}.rotas-bar a{color:var(--muted);text-decoration:none;padding-block:2px;border-bottom:2px solid transparent}.rotas-bar a:hover{color:var(--ink)}.rotas-bar a[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}.rotas-bar .rb-home{color:var(--accent);font-weight:600}.rv-btn{display:inline-flex;align-items:center;gap:8px;justify-self:start;font-family:var(--ui,system-ui);font-weight:800;font-size:16px;letter-spacing:.02em;text-decoration:none;color:var(--paper,#fff);background:var(--accent);padding:10px 16px;border-radius:999px;box-shadow:0 2px 0 rgba(0,0,0,.15)}.rv-btn:hover{filter:brightness(1.08)}.rv-btn:focus-visible{outline:3px solid var(--ink);outline-offset:2px}.rotas-bar a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}</style><style>/* padrão das Rotas: formato fácil */body{font-size:19px;line-height:1.7}h1{font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(46px,11vw,104px);line-height:.9;text-transform:uppercase;overflow-wrap:anywhere}h2{font-family:var(--display);font-stretch:66%;font-weight:800;font-size:clamp(34px,7vw,52px);line-height:.95;text-transform:uppercase}</style><nav class="rotas-bar" aria-label="Routes"><div><a class="rb-home" href="https://fcarvalhodev.github.io/rotas/en/">Routes</a><a href="https://fcarvalhodev.github.io/rota-washington/en/">Washington</a><a href="https://fcarvalhodev.github.io/rota-master/en/">Master</a><a href="https://fcarvalhodev.github.io/rota-curitiba/en/">Curitiba</a><a href="https://fcarvalhodev.github.io/rota-da-fe/en/">Faith</a><a href="https://fcarvalhodev.github.io/rota-esplanada/en/">Esplanada</a><a href="https://fcarvalhodev.github.io/rota-itamaraty/en/">Itamaraty</a><a href="https://fcarvalhodev.github.io/rota-da-picanha/en/">Picanha</a><a href="https://fcarvalhodev.github.io/rota-do-ibge/en/">IBGE</a><a href="https://fcarvalhodev.github.io/rota-velho-chico/en/">Velho Chico</a><a href="https://fcarvalhodev.github.io/rota-do-tesouro/en/">Treasury</a><a href="https://fcarvalhodev.github.io/rota-rouanet/en/">Rouanet</a><a href="https://fcarvalhodev.github.io/rota-dos-ventos/en/">Winds</a><a href="https://fcarvalhodev.github.io/rota-do-algoritmo/en/" aria-current="page">Algorithm</a><a class="rb-lang" href="../visual.html" hreflang="pt-BR" lang="pt-BR">PT</a></div></nav>
+
+
+<main class="rv" id="rv" aria-label="Algorithm Route in icons"></main>
+<script>
+window.RV_DATA={lang:"en",
+ kicker:"Algorithm Route · in icons",
+ title:"Does Meta take down more left-wing accounts?",
+ answer:"It cannot be proven yet, but the signs weigh more on one side: <b>many cases and 1,121 reports</b> on the left, few on the right. <b>Nikolas</b>'s engagement is off the charts, but that does not prove a push. Meta's data is missing.",
+ heroIcons:["iso-pessoa","iso-x","iso-cadeado","iso-pessoa","iso-lupa","iso-check","iso-pessoa","iso-x","iso-sobe","iso-pessoa"],
+ full:"index.html",
+ updated:"Cases and numbers reported up to October 13, 2026 · updated October 14, 2026 · original icons and Tabler Icons (MIT)",
+ cards:[
+  {type:"hero",span:"s4",rows:2},
+  {type:"iso",span:"s8",label:"Comparison · large accounts banned by Meta itself, 2025–2026",title:"Left 6 × right 1",size:30,
+   rows:[
+    {name:"Left",icon:"iso-pessoa",n:6,value:"6 profiles",color:"var(--no,#a12a2a)"},
+    {name:"Right",icon:"iso-pessoa",n:1,value:"1, cause not explained",color:"var(--accent)"}],
+   key:{icon:"iso-pessoa",text:"1 profile reported with a name and a date",color:"var(--muted)"},
+   text:"Left: Jones Manoel, Chavoso da USP, Tiago Santineli, Bruna Santiago, Revelando Brasil and Igreja Alternativa. Right: Nikolas Ferreira's posts, which disappeared in August 2026 without Meta or the congressman explaining why. Only cases that made the news.",
+   src:[["Full list and sources on the page","index.html#h-depara"]]},
+  {type:"flow",span:"s8",label:"Four ways an account can disappear",title:"First, find out who decided",
+   steps:[{icon:"gavel",name:"Court order",sub:"outside this route",hot:true},{icon:"book",name:"Platform rule",sub:"“community standards”"},{icon:"alert-triangle",name:"Error or glitch",sub:"goes down, then comes back"},{icon:"iso-desce",name:"Less reach",sub:"the account stays, few people see it"}],
+   text:"This route compares only what Meta itself does."},
+  {type:"bars",span:"s6",label:"1,121 reports from Lula supporters, gathered by CTRL+Z",title:"Most are about reach and features",max:40,
+   items:[{name:"Reduced reach",label:"36.8%",v:36.8,color:"var(--no,#a12a2a)"},{name:"Blocked features",label:"32%",v:32,color:"var(--no,#a12a2a)"},{name:"Posts or accounts removed",label:"22%",v:22,color:"var(--no,#a12a2a)"},{name:"Banned accounts only",label:"108 accounts",v:9.6,color:"var(--ink)"}],
+   text:"Reports sent by the people themselves, with no checking process described. There is no equivalent survey for the right.",
+   src:[["Revista Fórum: CTRL+Z survey","https://revistaforum.com.br/revista-forum/meta-censura-perfis-apoio-lula/"]]},
+  {type:"bars",span:"s6",label:"Interactions per post on Instagram, April 23 to 30, 2026",title:"Nikolas beats Brazilian celebrities",max:1.85,
+   items:[{name:"Nikolas Ferreira",label:"1.85 million",v:1.85,color:"var(--accent)"},{name:"Virgínia Fonseca",label:"1.82 million",v:1.82,color:"var(--d)"},{name:"Bruna Marquezine",label:"1.13 million",v:1.13,color:"var(--d)"}],
+   text:"Among politicians, from January to June, Zeeng measured 1.47 million for Nikolas and 500,000 for Michelle. Lula ranks below PL city councilors.",
+   src:[["A Voz de Jundiaí: April ranking","https://www.avozjundiai.com/2026/05/nikolas-ferreira-lidera-engajamento-no.html"],["Boa Informação: Zeeng","https://boainformacao.com.br/2026/07/nikolas-lidera-influencia-politica-no-instagram-segundo-zeeng/"]]},
+  {type:"bars",span:"s8",label:"Estimated average interactions per post, October 2026",title:"With 15 times fewer followers, Nikolas beats Kim Kardashian",max:7.8,
+   items:[{name:"Messi",label:"7.8M",v:7.8,color:"var(--d)"},{name:"Cristiano Ronaldo",label:"5.6M",v:5.6,color:"var(--d)"},{name:"Taylor Swift",label:"4.4M",v:4.4,color:"var(--d)"},{name:"Selena Gomez",label:"2.4M",v:2.4,color:"var(--d)"},{name:"Nikolas Ferreira",label:"2.3M",v:2.3,color:"var(--accent)"},{name:"Neymar",label:"2.1M",v:2.1,color:"var(--d)"},{name:"Kylie Jenner",label:"1.6M",v:1.6,color:"var(--d)"},{name:"Beyoncé",label:"1.4M",v:1.4,color:"var(--d)"},{name:"Kim Kardashian",label:"0.5M",v:0.5,color:"var(--d)"}],
+   text:"Our calculation: followers times engagement rate, from different tools. Giant accounts always have lower rates.",
+   src:[["Hub Político: Nikolas","https://hubpolitico.com.br/perfil/nikolasferreira/seguidores"],["CreatorsJet: most-followed accounts","https://www.creatorsjet.com/top-300-instagram-influencers"]]},
+  {type:"compare",span:"s4",label:"Engagement rate per post",title:"Nikolas × Kim Kardashian",
+   a:{name:"Nikolas Ferreira",v:9.79,dec:2,suf:"%",color:"var(--accent)"},b:{name:"Kim Kardashian",v:0.15,dec:2,suf:"%"},vs:"×",
+   text:"About 65 times higher. The highest among the world's 15 most-followed accounts is 3.58%."},
+  {type:"compare",span:"s6",label:"Pix video, January 2025",title:"More views than accounts in Brazil",
+   a:{name:"views in two days",v:300,suf:" mi",color:"var(--accent)"},b:{name:"Instagram accounts in Brazil",v:130,suf:" mi"},vs:"×",strip:true,
+   text:"It looks suspicious, but the same person counts several times and there are viewers abroad. Aos Fatos found no paid boosting.",
+   src:[["Aos Fatos","https://www.aosfatos.org/noticias/video-nikolas-ferreira-pix/"],["BNews","https://www.bnews.com.br/noticias/politica/petistas-culpam-meta-pelo-sucesso-do-video-de-nikolas-ferreira-entenda.html"]]},
+  {type:"text",span:"s6",emo:"🧮",label:"What would prove it",title:"Where the views come from",
+   text:"To know whether Meta pushes Nikolas, one would need to see how many of the views come from people who do <b>not</b> follow him, compared with left-wing profiles of the same size. To know whether it persecutes the left, how many accounts on each side were restricted. <b>Only Meta has that data.</b>"},
+  {type:"chips",span:"s12",label:"The cases, in order",title:"Left and right, Meta's decisions only",
+   items:[
+    ["Jul 2020","Right: network of fake accounts linked to the Bolsonaros' offices","Removed for “inauthentic behavior”","var(--accent)"],
+    ["Jan 2023","Right: Nikolas Ferreira","Instagram taken down; reason and duration not given","var(--accent)"],
+    ["Aug 2025","Left: Jones Manoel","Back two days later, without explanation","var(--no,#a12a2a)"],
+    ["Nov 2025","Left: Chavoso da USP","Injunction not complied with as of Dec 2025","var(--no,#a12a2a)"],
+    ["Dec 2025","Left: Lula and PT vanish from search","Meta: worldwide glitch","var(--no,#a12a2a)"],
+    ["Aug 2026","Right: Nikolas's posts vanish","Cause not explained","var(--accent)"],
+    ["Sep 2026","Left: Lula's ads, Revelando Brasil, Igreja Alternativa","Restored; Meta admitted error in two","var(--no,#a12a2a)"],
+    ["Oct 2026","Left: Fonasefe","TSE ordered 3 posts removed; Meta removed 13, according to the group","var(--no,#a12a2a)"]],
+   src:[["Full list with sources","index.html#h-casos"]]},
+  {type:"flow",span:"s12",label:"What the TSE asked for on October 10",title:"The data still needed to complete the comparison",
+   steps:[{icon:"iso-doc",name:"Restrictions on Lula",sub:"since August 16",hot:true},{icon:"calendar",name:"Filter dates",sub:"for each candidacy",hot:true},{icon:"trending-up",name:"Reach numbers",sub:"proving the videos were delivered",hot:true},{icon:"scale",name:"Flávio's ads",sub:"did they go through the same checks?",hot:true}],
+   text:"Meta says the accusation “is false, it has not been demonstrated”. As of October 12, these items had not been delivered.",
+   src:[["Agência Brasil: the TSE's request","https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/tse-manda-meta-esclarecer-restricoes-postagens-da-campanha-de-lula"],["Revista Fórum: Meta's defense","https://revistaforum.com.br/tecnologia/meta-nao-entregou-dados-lula/"]]},
+  {type:"verdicts",span:"s12",label:"Is it true?",
+   items:[["v","“Meta took down Jones Manoel's accounts.”"],["m","“Meta banned more than a thousand accounts of Lula supporters.”"],["v","“Meta blocked the Lula campaign's ads.”"],["f","“Lula was banned from Instagram.”"],["v","“Nikolas has more engagement than Brazilian celebrities.”"],["v","“Nikolas gets more engagement than Kim Kardashian.”"],["m","“Nikolas's video had more views than there are Instagram users in Brazil.”"],["f","“Only left-wing accounts get taken down.”"],["o","“Meta persecutes the left.”"],["u","“Meta boosts Nikolas and the right.”"]]}
+ ]};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://fcarvalhodev.github.io/rotas/visual/icons.js"></script>
+<script src="https://fcarvalhodev.github.io/rotas/visual/visual.js"></script>
+</body></html>
