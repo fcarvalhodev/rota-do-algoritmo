@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Rota do Algoritmo em ícones</title>
-<meta name="description" content="Contas derrubadas pela Meta no Brasil em ícones: os casos, quantas voltaram, o que houve com a direita, o que a Meta diz e o que ainda falta saber.">
+<meta name="description" content="O de-para entre esquerda e direita na Meta, em ícones: contas banidas de cada lado, os 1.121 relatos, o engajamento de Nikolas Ferreira e os dados que o TSE pediu.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="https://fcarvalhodev.github.io/rotas/visual/visual.css">
@@ -20,58 +20,53 @@
 window.RV_DATA={
  kicker:"Rota do Algoritmo · em ícones",
  title:"A Meta derruba mais contas da esquerda?",
- answer:"Ainda não dá para afirmar. Os casos são <b>reais</b> e muitas contas voltaram sem explicação, mas ninguém de fora sabe <b>quantas contas de cada lado</b> caíram. O TSE pediu os dados.",
- heroIcons:["iso-pessoa","iso-x","iso-cadeado","iso-pessoa","iso-lupa","iso-check","iso-pessoa","iso-x","iso-martelo","iso-pessoa"],
+ answer:"Ainda não dá para provar, mas os sinais pesam mais para um lado: <b>muitos casos e 1.121 relatos</b> na esquerda, poucos na direita. O engajamento de <b>Nikolas</b> é fora da curva, mas isso não prova empurrão. Falta o dado da Meta.",
+ heroIcons:["iso-pessoa","iso-x","iso-cadeado","iso-pessoa","iso-lupa","iso-check","iso-pessoa","iso-x","iso-sobe","iso-pessoa"],
  full:"index.html",
- updated:"Casos noticiados até 13 de outubro de 2026 · atualizado em 14 de outubro de 2026 · ícones próprios e Tabler Icons (MIT)",
+ updated:"Casos e números noticiados até 13 de outubro de 2026 · atualizado em 14 de outubro de 2026 · ícones próprios e Tabler Icons (MIT)",
  cards:[
   {type:"hero",span:"s4",rows:2},
+  {type:"iso",span:"s8",label:"De-para · contas grandes banidas pela própria Meta, 2025–2026",title:"Esquerda 6 × direita 1",size:30,
+   rows:[
+    {name:"Esquerda",icon:"iso-pessoa",n:6,value:"6 perfis",color:"var(--no,#a12a2a)"},
+    {name:"Direita",icon:"iso-pessoa",n:1,value:"1, causa não esclarecida",color:"var(--accent)"}],
+   key:{icon:"iso-pessoa",text:"1 perfil noticiado com nome e data",color:"var(--muted)"},
+   text:"Esquerda: Jones Manoel, Chavoso da USP, Tiago Santineli, Bruna Santiago, Revelando Brasil e Igreja Alternativa. Direita: os posts de Nikolas Ferreira, que sumiram em agosto de 2026 sem que a Meta ou o deputado explicassem. Só casos que viraram notícia.",
+   src:[["Lista completa e fontes na página","index.html#h-depara"]]},
   {type:"flow",span:"s8",label:"Quatro jeitos de uma conta sumir",title:"Primeiro, saber quem decidiu",
-   steps:[{icon:"gavel",name:"Ordem da Justiça",sub:"um juiz manda tirar do ar",hot:true},{icon:"book",name:"Regra da plataforma",sub:"“padrões da comunidade”"},{icon:"alert-triangle",name:"Erro ou falha",sub:"cai e depois volta"},{icon:"iso-desce",name:"Menos alcance",sub:"a conta fica, pouca gente vê"}],
-   text:"O primeiro é decisão da Justiça. Os outros três são da própria Meta, e são o assunto desta rota."},
-  {type:"iso",span:"s8",label:"Perfis de esquerda derrubados pela Meta",title:"Os maiores tinham perto de 1 milhão de seguidores",size:22,
-   rows:[
-    {name:"Chavoso da USP · nov 2025",icon:"iso-pessoa",n:10,value:"mais de 1 milhão",color:"var(--accent)"},
-    {name:"Jones Manoel · ago 2025",icon:"iso-pessoa",n:10,value:"cerca de 1 milhão",color:"var(--accent)"},
-    {name:"Tiago Santineli · out 2025",icon:"iso-pessoa",n:8.5,value:"cerca de 850 mil",color:"var(--accent)"},
-    {name:"@leituraspretas · jul 2025",icon:"iso-pessoa",n:0.4,value:"39,6 mil",color:"var(--accent)"}],
-   key:{icon:"iso-pessoa",text:"100 mil seguidores",color:"var(--accent)"},
-   text:"Quase sempre a Meta só disse que a conta “não segue os padrões”, sem apontar o post nem a regra.",
-   src:[["Poder360: Chavoso da USP","https://www.poder360.com.br/poder-gente/chavoso-da-usp-influenciador-de-esquerda-tem-conta-desativada-no-instagram/"],["TVT News: Jones Manoel","https://tvtnews.com.br/?p=759156"],["Brasil de Fato: Santineli e Bruna Santiago","https://brasildefato.com.br/2025/11/27/ofensiva-contra-vozes-progressistas-chavoso-da-usp-santineli-e-bruna-santiago-denunciam-censura-da-meta-apos-contas-banidas/"]]},
-  {type:"iso",span:"s4",label:"Dos 10 casos desta rota",title:"7 voltaram, 3 não",size:26,
-   rows:[
-    {name:"Voltaram",icon:"iso-check",n:7,value:"7",color:"var(--ok,#1f6b45)"},
-    {name:"Fora na última notícia",icon:"iso-x",n:3,value:"3",color:"var(--no,#a12a2a)"}],
-   key:{icon:"iso-check",text:"1 caso",color:"var(--muted)"},
-   text:"6 voltaram por decisão da Meta, quase sempre em horas. 1 voltou por ordem da Justiça.",
-   src:[["Lista completa na página","index.html#h-casos"]]},
-  {type:"chips",span:"s12",label:"Os casos, em ordem",title:"De 2024 à campanha de 2026",
+   steps:[{icon:"gavel",name:"Ordem da Justiça",sub:"fora desta rota",hot:true},{icon:"book",name:"Regra da plataforma",sub:"“padrões da comunidade”"},{icon:"alert-triangle",name:"Erro ou falha",sub:"cai e depois volta"},{icon:"iso-desce",name:"Menos alcance",sub:"a conta fica, pouca gente vê"}],
+   text:"Esta rota compara só o que a própria Meta faz."},
+  {type:"bars",span:"s6",label:"1.121 relatos de apoiadores de Lula, reunidos pela CTRL+Z",title:"A maioria é de alcance e funções",max:40,
+   items:[{name:"Alcance reduzido",label:"36,8%",v:36.8,color:"var(--no,#a12a2a)"},{name:"Funções bloqueadas",label:"32%",v:32,color:"var(--no,#a12a2a)"},{name:"Posts ou contas removidos",label:"22%",v:22,color:"var(--no,#a12a2a)"},{name:"Só contas banidas",label:"108 contas",v:9.6,color:"var(--ink)"}],
+   text:"Relatos enviados pelas próprias pessoas, sem checagem descrita. Não há levantamento igual para a direita.",
+   src:[["Revista Fórum: levantamento da CTRL+Z","https://revistaforum.com.br/revista-forum/meta-censura-perfis-apoio-lula/"]]},
+  {type:"bars",span:"s6",label:"Interações por post no Instagram, 23 a 30 de abril de 2026",title:"Nikolas passa as celebridades brasileiras",max:1.85,
+   items:[{name:"Nikolas Ferreira",label:"1,85 milhão",v:1.85,color:"var(--accent)"},{name:"Virgínia Fonseca",label:"1,82 milhão",v:1.82,color:"var(--d)"},{name:"Bruna Marquezine",label:"1,13 milhão",v:1.13,color:"var(--d)"}],
+   text:"Entre políticos, de janeiro a junho, a Zeeng mediu 1,47 milhão para Nikolas e 500 mil para Michelle. Lula fica abaixo de vereadores do PL.",
+   src:[["A Voz de Jundiaí: ranking de abril","https://www.avozjundiai.com/2026/05/nikolas-ferreira-lidera-engajamento-no.html"],["Boa Informação: Zeeng","https://boainformacao.com.br/2026/07/nikolas-lidera-influencia-politica-no-instagram-segundo-zeeng/"]]},
+  {type:"compare",span:"s6",label:"Vídeo do Pix, janeiro de 2025",title:"Mais views que contas no Brasil",
+   a:{name:"views em dois dias",v:300,suf:" mi",color:"var(--accent)"},b:{name:"contas de Instagram no Brasil",v:130,suf:" mi"},vs:"×",strip:true,
+   text:"Parece suspeito, mas a mesma pessoa conta várias vezes e há público de fora. A Aos Fatos não achou impulsionamento pago.",
+   src:[["Aos Fatos","https://www.aosfatos.org/noticias/video-nikolas-ferreira-pix/"],["BNews","https://www.bnews.com.br/noticias/politica/petistas-culpam-meta-pelo-sucesso-do-video-de-nikolas-ferreira-entenda.html"]]},
+  {type:"text",span:"s6",emo:"🧮",label:"O que provaria",title:"De onde vêm as views",
+   text:"Para saber se a Meta empurra Nikolas, seria preciso ver quanto das views vem de quem <b>não</b> o segue, comparado com perfis de esquerda do mesmo tamanho. Para saber se ela persegue a esquerda, quantas contas de cada lado foram restringidas. <b>Só a Meta tem esses dados.</b>"},
+  {type:"chips",span:"s12",label:"Os casos, em ordem",title:"Esquerda e direita, só decisões da Meta",
    items:[
-    ["jun 2024","Marquito, deputado do PSOL-SC","Juiz mandou devolver em 24 horas","var(--d)"],
-    ["jul 2025","Bruna Santiago, 3 perfis","Fora em nov. 2025",""],
-    ["ago 2025","Jones Manoel","Voltou dois dias depois, sem explicação",""],
-    ["out 2025","Tiago Santineli","Fora em nov. 2025",""],
-    ["nov 2025","Chavoso da USP","Liminar não cumprida até dez. 2025",""],
-    ["dez 2025","Lula e PT somem da busca","Meta: falha no mundo todo",""],
-    ["set 2026","Anúncios de Lula, Revelando Brasil, Igreja Alternativa","Voltaram; a Meta admitiu erro em dois",""],
-    ["out 2026","Vídeos de Lula zerados; posts sem impulso","Meta: defeito global; acusação “falsa”",""]],
-   src:[["NSC Total","https://www.nsctotal.com.br/?p=7201763"],["A Tarde","https://atarde.com.br/brasil/meta-se-pronuncia-apos-sumico-de-perfis-de-lula-e-liderancas-do-pt-1371848"],["Diario de Pernambuco","https://www.diariodepernambuco.com.br/politica/2026/09/11724707-caso-master-meta-recua-apos-remover-perfil-que-publicou-video-de-porchat.html"],["O Hoje","https://ohoje.com/2026/09/26/meta-devolve-perfil-de-igreja-apos-suspensao-no-instagram-por-criticas-ao-bolsonarismo/"],["Revista Fórum","https://revistaforum.com.br/tecnologia/meta-nao-entregou-dados-lula/"]]},
-  {type:"text",span:"s8",emo:"🧮",label:"Por que uma lista não prova perseguição",title:"Falta o total dos dois lados",
-   text:"Só vira notícia quem tem voz. Para dizer que a Meta derruba <b>mais</b> contas de esquerda, é preciso saber quantas contas de cada lado caíram, pelas mesmas regras. Só a Meta tem esse número."},
-  {type:"scale",span:"s6",label:"E as contas de direita?",title:"Mais Justiça do que Meta",tilt:0,
-   left:{icon:"iso-escudo-x",title:"Decisão da Meta",text:"2020: rede de contas falsas ligada aos gabinetes da família Bolsonaro. 2021: advogada de Bolsonaro, devolvida no mesmo dia."},
-   right:{icon:"iso-martelo",title:"Ordem da Justiça",text:"2020: 12 contas de apoiadores bloqueadas no mundo todo por ordem de Moraes. 2024: o X fora do ar."},
-   text:"Não achamos casos recentes de perfis grandes de direita derrubados pela própria Meta.",
-   src:[["Congresso em Foco: rede de 2020","https://congressoemfoco.com.br/tecnologia/facebook-remove-contas-ligadas-ao-psl-e-a-familia-bolsonaro"],["Al Jazeera: ordem de Moraes","https://www.aljazeera.com/news/2020/8/2/facebook-bows-to-brazil-court-order-bans-pro-bolsonaro-profiles"],["Revista Oeste: advogada","https://revistaoeste.com/tecnologia/advogada-de-bolsonaro-tem-conta-suspensa-no-instagram/"]]},
-  {type:"text",span:"s6",emo:"🗣️",label:"O que a Meta diz",title:"“Simplesmente falsas”",
-   text:"A Meta nega preferência política. Diz que a mesma limitação de recomendação vale para Lula e para Flávio, que parte dos casos foram <b>falhas no mundo todo</b> e que o bloqueio dos anúncios de Lula foi <b>erro de um filtro contra golpes</b>.",
-   src:[["Correio da Manhã: resposta da Meta","https://www.correiodamanha.com.br/politica/2026/10/326073-campanha-de-lula-acusa-meta-de-favorecer-flavio-bolsonaro-nas-redes.html"],["Revista Fórum: defesa no TSE","https://revistaforum.com.br/tecnologia/meta-nao-entregou-dados-lula/"]]},
-  {type:"flow",span:"s12",label:"O que o TSE pediu em 10 de outubro",title:"Os dados que faltam para comparar os dois lados",
+    ["jul 2020","Direita: rede de contas falsas ligada aos gabinetes dos Bolsonaro","Removida por “comportamento inautêntico”","var(--accent)"],
+    ["jan 2023","Direita: Nikolas Ferreira","Instagram derrubado; motivo e duração não informados","var(--accent)"],
+    ["ago 2025","Esquerda: Jones Manoel","Voltou dois dias depois, sem explicação","var(--no,#a12a2a)"],
+    ["nov 2025","Esquerda: Chavoso da USP","Liminar não cumprida até dez. 2025","var(--no,#a12a2a)"],
+    ["dez 2025","Esquerda: Lula e PT somem da busca","Meta: falha no mundo todo","var(--no,#a12a2a)"],
+    ["ago 2026","Direita: posts de Nikolas somem","Causa não esclarecida","var(--accent)"],
+    ["set 2026","Esquerda: anúncios de Lula, Revelando Brasil, Igreja Alternativa","Voltaram; a Meta admitiu erro em dois","var(--no,#a12a2a)"],
+    ["out 2026","Esquerda: Fonasefe","TSE mandou tirar 3 posts; a Meta tirou 13, segundo a entidade","var(--no,#a12a2a)"]],
+   src:[["Lista completa com fontes","index.html#h-casos"]]},
+  {type:"flow",span:"s12",label:"O que o TSE pediu em 10 de outubro",title:"Os dados que faltam para fechar o de-para",
    steps:[{icon:"iso-doc",name:"Restrições a Lula",sub:"desde 16 de agosto",hot:true},{icon:"calendar",name:"Datas dos filtros",sub:"para cada candidatura",hot:true},{icon:"trending-up",name:"Números de alcance",sub:"que provem a entrega dos vídeos",hot:true},{icon:"scale",name:"Anúncios de Flávio",sub:"passaram pelas mesmas checagens?",hot:true}],
-   text:"Em 12 de outubro a Meta disse que cumpriu a ordem, mas esses pontos ainda não tinham sido entregues.",
+   text:"A Meta diz que a acusação “é falsa, não está demonstrada”. Em 12 de outubro, esses pontos ainda não tinham sido entregues.",
    src:[["Agência Brasil: pedido do TSE","https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/tse-manda-meta-esclarecer-restricoes-postagens-da-campanha-de-lula"],["Revista Fórum: defesa da Meta","https://revistaforum.com.br/tecnologia/meta-nao-entregou-dados-lula/"]]},
   {type:"verdicts",span:"s12",label:"É verdade?",
-   items:[["v","“A Meta derrubou as contas do Jones Manoel.”"],["v","“A Meta bloqueou os anúncios da campanha de Lula.”"],["f","“Lula foi banido do Instagram.”"],["m","“As contas derrubadas sempre voltam.”"],["f","“Só conta de esquerda é derrubada.”"],["o","“A Meta persegue a esquerda.”"],["u","“A Meta impulsiona as contas bolsonaristas.”"]]}
+   items:[["v","“A Meta derrubou as contas do Jones Manoel.”"],["m","“A Meta baniu mais de mil contas de apoiadores de Lula.”"],["v","“A Meta bloqueou os anúncios da campanha de Lula.”"],["f","“Lula foi banido do Instagram.”"],["v","“Nikolas tem mais engajamento que celebridades brasileiras.”"],["m","“O vídeo do Nikolas teve mais views do que há usuários de Instagram no Brasil.”"],["f","“Só conta de esquerda é derrubada.”"],["o","“A Meta persegue a esquerda.”"],["u","“A Meta impulsiona Nikolas e a direita.”"]]}
  ]};
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
