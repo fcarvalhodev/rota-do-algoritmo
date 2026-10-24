@@ -162,7 +162,7 @@ const $=id=>document.getElementById(id);
 function factLi(f,withYear){
  const li=document.createElement("li");li.style.setProperty("--c","var(--"+f.ev+")");
  const tg=document.createElement("span");tg.className="tg "+f.ev;tg.textContent=LBL[f.ev];
- const b=document.createElement("b");b.textContent=" "+f.t+". ";
+ const b=document.createElement("b");b.textContent=" "+f.t+(/[?!.…]$/.test(f.t)?" ":". ");
  if(withYear&&f.y){const y=document.createElement("span");y.className="yr";y.textContent=f.y;li.append(y)}
  li.append(tg,b,document.createTextNode(f.b+" "));
  if(f.src){const sm=document.createElement("small");const a=document.createElement("a");a.href=f.src[1];a.target="_blank";a.rel="noopener";a.textContent="Source: "+f.src[0];sm.append(a);li.append(sm)}
@@ -181,7 +181,7 @@ const BOSS_HIDE=["\"You hid it? People would have LOVED fighting there.\"","\"Le
 const BOSS_FUN=["\"Kittens keep people hooked. Approved.\"","\"Laughing keeps them too. I like it.\""];
 let i,T,R,Q,boosted,busy;
 function pick(a){return a[Math.floor(Math.random()*a.length)]}
-function say(t){$("boss").textContent="";const b=document.createElement("b");b.textContent="The shareholder:";$("boss").append(b,document.createTextNode(t))}
+function say(t){$("boss").textContent="";const b=document.createElement("b");b.textContent="The shareholder: ";$("boss").append(b,document.createTextNode(t))}
 function meters(){const set=(id,v,max)=>{$("m"+id).style.width=Math.max(0,Math.min(100,v/max*100))+"%";$("v"+id).textContent=Math.round(v)};
  set("T",T,80);set("R",R,60);set("Q",Math.max(0,Q),40);$("vQ").textContent=Math.round(Q)}
 function card(p,cls){const d=document.createElement("div");d.className="post"+(cls?" "+cls:"");
@@ -210,7 +210,7 @@ function finish(){$("hideB").disabled=true;deck.innerHTML='<div class="post"><di
  if(T>=45&&angry>=4){title="The shareholder gave you a bonus";body="Your feed kept people hooked, and almost everything you boosted was fighting or hoaxes. It is the fastest way to win screen time."}
  else if(cnt.util>=3&&angry<=1){title="You're fired";body="Your feed was useful and calm, but time in the app dropped. For whoever sells ads, that is a loss."}
  else{title="No bonus, no firing";body="You mixed a bit of everything. Real algorithms do this calculation millions of times per second, and each company chooses the weight of each thing."}
- $("endT").textContent=title;$("endB").textContent=body+"You boosted "+n+" of "+POSTS.length+" posts:";
+ $("endT").textContent=title;$("endB").textContent=body+" You boosted "+n+" of "+POSTS.length+" posts:";
  const mix=$("mix");mix.textContent="";$("legend").textContent="";
  Object.keys(KIND).forEach(k=>{if(!cnt[k])return;const s=document.createElement("i");s.style.width=(cnt[k]/Math.max(1,n)*100)+"%";s.style.background=KIND[k][1];mix.append(s);
   const l=document.createElement("span");l.style.setProperty("--c",KIND[k][1]);l.textContent=KIND[k][0]+": "+cnt[k];$("legend").append(l)});
