@@ -1,140 +1,233 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Moderador por um Dia</title>
-<meta name="description" content="Você assumiu a moderação por um dia. Chegam frases sobre redes, contas derrubadas e alcance. Classifique antes que os dois lados reclamem, o que vai acontecer de qualquer jeito.">
+<title>Você é o Algoritmo</title>
+<meta name="description" content="Jogo da Rota do Algoritmo: você decide o que sobe e o que some no feed, com um acionista no seu pé. Depois, tente abrir o cofre com os dados que só a Meta tem.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="https://fcarvalhodev.github.io/rotas/jogos/jogo.css">
+<style>
+:root{
+  --bg:#f3f1ea; --paper:#fbfaf6; --ink:#1c1b1f; --muted:#5b5a63; --line:#d9d5ca; --soft:#ebe7dc;
+  --doc:#1f6b45; --doc-soft:#dcefe3; --open:#5b4bb0; --open-soft:#e7e3f6; --alleg:#a3501a; --alleg-soft:#f8e6d7; --no:#a12a2a; --no-soft:#f6dede;
+  --display:"Archivo","Arial Narrow",Impact,sans-serif;
+  --ui:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121216; --paper:#1a1a20; --ink:#ecebf0; --muted:#a3a2ad; --line:#2e2d36; --soft:#24232b;
+  --doc:#6fd39c; --doc-soft:#173326; --open:#ab9ff0; --open-soft:#29254a; --alleg:#f0a066; --alleg-soft:#3a2516; --no:#f19b9b; --no-soft:#3a1c1c;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121216; --paper:#1a1a20; --ink:#ecebf0; --muted:#a3a2ad; --line:#2e2d36; --soft:#24232b;
+  --doc:#6fd39c; --doc-soft:#173326; --open:#ab9ff0; --open-soft:#29254a; --alleg:#f0a066; --alleg-soft:#3a2516; --no:#f19b9b; --no-soft:#3a1c1c;
+  color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none!important}
+a{color:inherit}
+.wrap{max-width:860px;margin:0 auto;padding-inline:16px}
+header.g{padding-block:26px 8px;display:grid;gap:10px}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+h1{margin:0;font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(52px,13vw,104px);line-height:.86;text-transform:uppercase;overflow-wrap:anywhere}
+h2{font-family:var(--display);font-stretch:66%;font-weight:800;font-size:clamp(30px,6.5vw,44px);line-height:.95;text-transform:uppercase;margin:0 0 10px}
+h3{font-family:var(--ui);font-size:19px;line-height:1.25;margin:0 0 6px}
+.lede{margin:0;max-width:64ch;font-size:18px}
+.how{margin:0;font-family:var(--ui);font-size:15px;color:var(--muted)}
+.btn{font-family:var(--ui);font-weight:800;font-size:17px;border:0;border-radius:999px;padding:12px 20px;background:var(--accent);color:var(--paper);cursor:pointer;min-height:48px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;justify-content:center}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--line)}
+.btn:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.btn[disabled]{opacity:.45;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.tg{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:2px 9px;border-radius:999px;white-space:nowrap;vertical-align:2px}
+.tg.doc{background:var(--doc-soft);color:var(--doc);border:1px solid var(--doc)}
+.tg.open{background:var(--open-soft);color:var(--open);border:1px dashed var(--open)}
+.tg.alleg{background:var(--alleg-soft);color:var(--alleg);border:1px solid var(--alleg)}
+.tg.no{background:var(--no-soft);color:var(--no);border:1px solid var(--no)}
+.facts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.facts li{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--c,var(--line));border-radius:8px;padding:12px 14px}
+.facts li b{font-family:var(--ui)}
+.facts li small{display:block;margin-top:4px;font-family:var(--ui);font-size:13px;color:var(--muted)}
+.facts li small a{color:var(--muted)}
+.facts .yr{font-family:var(--mono);font-size:12px;color:var(--muted);margin-right:6px}
+section.blk{margin-block:26px}
+.note{font-family:var(--ui);font-size:14px;color:var(--muted)}
+.end{border:2px solid var(--accent);border-radius:12px;background:var(--paper);padding:18px;display:grid;gap:12px}
+footer.g{margin-block:36px 28px;font-family:var(--ui);font-size:14px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
 <style>
 :root{--accent:#4338ca;--hero:#3730a3}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--accent:#a5b4fc;--hero:#3730a3}}
 :root[data-theme="dark"]{--accent:#a5b4fc;--hero:#3730a3}
-.hero{background:var(--hero);border-color:var(--hero)}.hero .go a{color:var(--hero)}
+
+</style>
+<style>
+.game{display:grid;gap:12px;margin-top:8px;justify-items:center}
+.meters{width:100%;max-width:440px;display:grid;gap:8px;font-family:var(--ui);font-size:14px}
+.meter{display:grid;grid-template-columns:118px 1fr 40px;gap:8px;align-items:center}
+.meter .bar{height:14px;background:var(--soft);border-radius:999px;overflow:hidden;border:1px solid var(--line)}
+.meter .bar i{display:block;height:100%;width:0;background:var(--c);border-radius:999px;transition:width .5s ease}
+.meter b{font-family:var(--mono);font-size:13px;text-align:right}
+.phone{width:100%;max-width:380px;border:12px solid #1c1b1f;border-radius:36px;background:var(--bg);padding:12px 10px 18px;position:relative;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .phone{border-color:#45454f}}
+:root[data-theme="dark"] .phone{border-color:#45454f}
+.phone::before{content:"";display:block;width:90px;height:6px;border-radius:6px;background:#3a3a40;margin:0 auto 10px}
+.appbar{display:flex;justify-content:space-between;align-items:center;font-family:var(--ui);font-weight:900;font-size:18px;margin:0 4px 8px}
+.appbar span{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--muted)}
+.deck{position:relative;height:300px}
+.post{position:absolute;inset:0;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px;display:grid;grid-template-rows:auto 1fr auto;gap:8px;font-family:var(--ui);touch-action:pan-y;user-select:none;-webkit-user-select:none;transition:transform .35s ease,opacity .35s ease}
+.post .who{display:flex;gap:8px;align-items:center;font-weight:800;font-size:15px}
+.post .who .av{font-size:24px;width:40px;height:40px;border-radius:50%;background:var(--soft);display:grid;place-items:center}
+.post .tx{font-family:var(--body);font-size:20px;line-height:1.35;align-self:center}
+.post .rx{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.post.up{transform:translateY(-120%) rotate(-4deg);opacity:0}
+.post.down{transform:translateY(60%) scale(.8);opacity:0}
+.post.back{transform:scale(.95) translateY(8px);opacity:.6}
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:380px}
+.choice .btn{min-height:58px;font-size:18px}
+.choice .btn.hide{background:var(--ink)}
+.boss{width:100%;max-width:440px;display:flex;gap:10px;align-items:flex-start;font-family:var(--ui);font-size:15px}
+.boss .av{font-size:30px;line-height:1}
+.boss p{margin:0;background:var(--soft);border-radius:12px 12px 12px 2px;padding:8px 12px;min-height:42px}
+.mix{display:flex;height:26px;border-radius:999px;overflow:hidden;border:1px solid var(--line)}
+.mix i{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-family:var(--ui);font-size:13px}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--c);margin-right:5px}
+.safe{display:grid;gap:10px;background:#2b2d33;color:#f2f2f2;border-radius:14px;padding:16px;border:6px solid #4a4d55}
+.safe h3{color:#fff}
+.lock{display:flex;gap:10px;align-items:center;width:100%;text-align:left;background:#3a3d45;color:#f2f2f2;border:0;border-radius:10px;padding:12px;font-family:var(--ui);font-size:15px;cursor:pointer;min-height:52px}
+.lock .k{font-size:22px}
+.lock.shake{animation:shake .45s ease}
+@keyframes shake{20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+.safe .msg{font-family:var(--ui);font-size:14px;color:#d6d6dc;min-height:22px;margin:0}
+.end h2{margin:0}
 </style>
 </head><body>
 <style>/* barra comum das Rotas */.rotas-bar .rb-lang{margin-left:auto;color:var(--accent);font-weight:600}.rotas-bar{border-bottom:1px solid var(--line);background:var(--bg);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}.rotas-bar>div{max-width:880px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}.rotas-bar a{color:var(--muted);text-decoration:none;padding-block:2px;border-bottom:2px solid transparent}.rotas-bar a:hover{color:var(--ink)}.rotas-bar a[aria-current]{color:var(--ink);border-bottom-color:var(--accent)}.rotas-bar .rb-home{color:var(--accent);font-weight:600}.rv-btn{display:inline-flex;align-items:center;gap:8px;justify-self:start;font-family:var(--ui,system-ui);font-weight:800;font-size:16px;letter-spacing:.02em;text-decoration:none;color:var(--paper,#fff);background:var(--accent);padding:10px 16px;border-radius:999px;box-shadow:0 2px 0 rgba(0,0,0,.15)}.rv-btn:hover{filter:brightness(1.08)}.rv-btn:focus-visible{outline:3px solid var(--ink);outline-offset:2px}.rotas-bar a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}</style><nav class="rotas-bar" aria-label="Rotas"><div><a class="rb-home" href="https://fcarvalhodev.github.io/rotas/">Rotas</a><a href="https://fcarvalhodev.github.io/rota-washington/">Washington</a><a href="https://fcarvalhodev.github.io/rota-master/">Master</a><a href="https://fcarvalhodev.github.io/rota-curitiba/">Curitiba</a><a href="https://fcarvalhodev.github.io/rota-da-fe/">Fé</a><a href="https://fcarvalhodev.github.io/rota-esplanada/">Esplanada</a><a href="https://fcarvalhodev.github.io/rota-itamaraty/">Itamaraty</a><a href="https://fcarvalhodev.github.io/rota-da-picanha/">Picanha</a><a href="https://fcarvalhodev.github.io/rota-do-ibge/">IBGE</a><a href="https://fcarvalhodev.github.io/rota-velho-chico/">Velho Chico</a><a href="https://fcarvalhodev.github.io/rota-do-tesouro/">Tesouro</a><a href="https://fcarvalhodev.github.io/rota-rouanet/">Rouanet</a><a href="https://fcarvalhodev.github.io/rota-dos-ventos/">Ventos</a><a href="https://fcarvalhodev.github.io/rota-do-algoritmo/" aria-current="page">Algoritmo</a><a href="https://fcarvalhodev.github.io/rota-do-posto/">Posto</a><a href="https://fcarvalhodev.github.io/rota-das-queimadas/">Queimadas</a><a href="https://fcarvalhodev.github.io/rota-dos-games/">Games</a><a href="https://fcarvalhodev.github.io/rota-do-contracheque/">Contracheque</a><a href="https://fcarvalhodev.github.io/rota-palantir/">Palantir</a><a class="rb-lang" href="en/jogo.html" hreflang="en" lang="en">EN</a></div></nav>
-<main class="jg" id="jg" aria-live="polite"><noscript>Este jogo precisa de JavaScript. <a href="index.html">Ler a rota</a>.</noscript></main>
+<main class="wrap">
+<header class="g">
+  <span class="kicker">Rota do Algoritmo · jogo</span>
+  <h1>Você é o Algoritmo</h1>
+  <p class="lede">Hoje quem manda no feed é você. Cada post que você impulsiona aparece para mais gente; cada um que você esconde some. O acionista só quer saber de uma coisa: tempo no app.</p>
+  <p class="how">Como jogar: arraste o post para cima para impulsionar ou para baixo para esconder. São 12 posts. Os posts são inventados; os fatos do final são reais e têm fonte.</p>
+</header>
+
+<div class="game" id="game">
+  <div class="meters" aria-live="polite">
+    <div class="meter" style="--c:var(--accent)"><span>⏱️ Tempo no app</span><span class="bar"><i id="mT"></i></span><b id="vT">0</b></div>
+    <div class="meter" style="--c:var(--no)"><span>😡 Briga</span><span class="bar"><i id="mR"></i></span><b id="vR">0</b></div>
+    <div class="meter" style="--c:var(--doc)"><span>✅ Info certa</span><span class="bar"><i id="mQ"></i></span><b id="vQ">0</b></div>
+  </div>
+  <div class="phone">
+    <div class="appbar">Feedzão <span id="cnt">1/12</span></div>
+    <div class="deck" id="deck" aria-live="polite"></div>
+  </div>
+  <div class="choice">
+    <button class="btn hide" type="button" id="hideB">⬇ Esconder</button>
+    <button class="btn" type="button" id="boostB">⬆ Impulsionar</button>
+  </div>
+  <p class="note" style="text-align:center;margin:0">Arraste o post para cima ou para baixo, toque nos botões ou use as setas do teclado.</p>
+  <div class="boss"><span class="av" aria-hidden="true">🎩</span><p id="boss"><b>O acionista:</b> “Seu trabalho é simples: deixar o povo no app o máximo de tempo. Mais tempo, mais anúncio.”</p></div>
+</div>
+<section class="blk end" id="end" hidden aria-live="polite">
+  <h2 id="endT"></h2>
+  <p id="endB"></p>
+  <div class="mix" id="mix" role="img"></div>
+  <div class="legend" id="legend"></div>
+  <h3 style="margin-top:8px">Isso não é só brincadeira</h3>
+  <ul class="facts" id="real"></ul>
+  <h3 style="margin-top:8px">E a pergunta da rota: a Meta empurra um lado?</h3>
+  <ul class="facts" id="case"></ul>
+  <div class="safe">
+    <h3>🔐 O cofre da resposta</h3>
+    <p class="msg">Para saber se a Meta favorece alguém, seria preciso abrir três fechaduras. Tente.</p>
+    <div id="locks" style="display:grid;gap:8px"></div>
+    <p class="msg" id="lockMsg" aria-live="polite"></p>
+  </div>
+  <p><span class="tg no">Não demonstrado</span> <b>“A Meta impulsiona Nikolas e a direita.”</b> <span class="tg open">Em aberto</span> <b>“A Meta persegue a esquerda.”</b> Sem os dados do cofre, nenhum dos dois lados consegue provar o que diz. O TSE pediu; a Meta ainda não entregou tudo.</p>
+  <div class="row"><button class="btn" type="button" id="again">Jogar de novo</button><a class="btn ghost" href="index.html">Ler a Rota do Algoritmo</a></div>
+</section>
+
+<footer class="g">
+  <p>Fatos até 22 de outubro de 2026. Investigação não é condenação. Cada fato do jogo tem fonte; os selos seguem a <a href="https://fcarvalhodev.github.io/rotas/metodologia.html">metodologia das Rotas</a>.</p>
+  <p class="row"><a class="btn ghost" href="index.html">Ler a rota completa</a><a class="btn ghost" href="quiz.html">Fazer o quiz da rota</a></p>
+</footer>
+</main>
 <script>
-window.JG_DATA={
- "kicker": "Rota do Algoritmo · jogo",
- "title": "Moderador por um Dia",
- "host": [
-  "🤖",
-  "Algoritmo estagiário"
- ],
- "emo": "👍",
- "intro": "Você assumiu a moderação por um dia. Chegam frases sobre redes, contas derrubadas e alcance. Classifique antes que os dois lados reclamem, o que vai acontecer de qualquer jeito.",
- "rounds": [
-  {
-   "type": "boato",
-   "title": "Fila de denúncias",
-   "how": "leia a frase que circula e diga se é Verdade, Meia verdade, Falso ou Sem prova.",
-   "n": 7,
-   "items": [
-    {
-     "c": "A Meta derrubou as contas do Jones Manoel.",
-     "v": "v",
-     "e": "Instagram e Facebook saíram do ar em 6 de agosto de 2025 e voltaram dois dias depois, sem explicação nas duas vezes.",
-     "s": []
-    },
-    {
-     "c": "A Meta baniu mais de mil contas de apoiadores de Lula.",
-     "v": "m",
-     "e": "São 1.121 relatos de vários tipos de restrição, a maioria de alcance e funções. Contas banidas são 108. Os relatos não foram verificados um a um.",
-     "s": []
-    },
-    {
-     "c": "A Meta bloqueou os anúncios da campanha de Lula.",
-     "v": "v",
-     "e": "A própria Meta admitiu ao TSE que desativou a conta de anúncios por engano em 23 de setembro de 2026. Ela diz que a conta voltou em cerca de uma hora.",
-     "s": []
-    },
-    {
-     "c": "Lula foi banido do Instagram.",
-     "v": "f",
-     "e": "Em dezembro de 2025 os perfis de Lula e de petistas sumiram da busca por algumas horas. A conta não foi banida.",
-     "s": []
-    },
-    {
-     "c": "Nikolas tem mais engajamento que celebridades brasileiras.",
-     "v": "v",
-     "e": "Em abril de 2026, a média dele por post passou a de Virgínia Fonseca e a de Bruna Marquezine.",
-     "s": []
-    },
-    {
-     "c": "Nikolas engaja mais que Kim Kardashian.",
-     "v": "v",
-     "e": "Com 15 vezes menos seguidores, ele tem cerca de 4 vezes mais interações por post, e uma taxa de engajamento cerca de 65 vezes maior. As medições são de ferramentas diferentes, mas a distância é grande demais para ser só isso.",
-     "s": []
-    },
-    {
-     "c": "O Nikolas engaja muito mais no Instagram do que nas outras redes.",
-     "v": "v",
-     "e": "De fevereiro a abril de 2026, cada post no Instagram rendeu cerca de 1,33 milhão de interações, contra 145 mil no TikTok e 64 mil no YouTube. Isso não prova empurrão da Meta: cada rede conta de um jeito e tem outro público.",
-     "s": []
-    },
-    {
-     "c": "O vídeo do Nikolas teve mais views do que há usuários de Instagram no Brasil.",
-     "v": "m",
-     "e": "Os números batem: cerca de 300 milhões de views e cerca de 130 milhões de contas. Mas a mesma pessoa conta várias vezes e há público de fora, então isso sozinho não prova fraude nem empurrão.",
-     "s": []
-    },
-    {
-     "c": "Só conta de esquerda é derrubada.",
-     "v": "f",
-     "e": "A Meta também derrubou uma rede ligada aos gabinetes da família Bolsonaro em 2020, e os posts de Nikolas sumiram em 2026. Mas, nos casos que achamos, a esquerda aparece bem mais.",
-     "s": []
-    },
-    {
-     "c": "A Meta persegue a esquerda.",
-     "v": "u",
-     "e": "Há muitos casos e mais de mil relatos, mas nenhum dado da Meta que compare os dois lados. O TSE pediu, e ela ainda não entregou tudo.",
-     "s": []
-    },
-    {
-     "c": "A Meta impulsiona Nikolas e a direita.",
-     "v": "u",
-     "e": "O engajamento é fora da curva, mas não achamos dado que mostre a Meta empurrando. Para saber, seria preciso ver quanto das views vem de quem não segue o perfil.",
-     "s": []
-    }
-   ]
-  }
- ],
- "ranks": [
-  [
-   0,
-   "Banido por excesso de engajamento em boato."
-  ],
-  [
-   40,
-   "Shadowban parcial."
-  ],
-  [
-   65,
-   "Moderador verificado."
-  ],
-  [
-   90,
-   "Selo azul de checador. Os dois lados reclamaram, então acertou."
-  ]
- ],
- "quips": {
-  "ok": [
-   "Isso! Pode publicar.",
-   "Na mosca. A fonte agradece.",
-   "Acertou. O grupo da família vai ter que engolir.",
-   "Boa! Checador raiz."
-  ],
-  "no": [
-   "Errou. Mas pelo menos você não compartilhou.",
-   "Quase. Leia a explicação antes de mandar no zap.",
-   "Não foi dessa vez. Acontece até com jornalista.",
-   "Ops. A tia do zap venceu essa."
-  ]
- },
- "full": "index.html",
- "updated": "Rotas · Rota do Algoritmo"
-};
+
+const LBL={doc:"Documentado",open:"Em aberto",alleg:"Alegação",no:"Não demonstrado"};
+const $=id=>document.getElementById(id);
+function factLi(f,withYear){
+ const li=document.createElement("li");li.style.setProperty("--c","var(--"+f.ev+")");
+ const tg=document.createElement("span");tg.className="tg "+f.ev;tg.textContent=LBL[f.ev];
+ const b=document.createElement("b");b.textContent=" "+f.t+". ";
+ if(withYear&&f.y){const y=document.createElement("span");y.className="yr";y.textContent=f.y;li.append(y)}
+ li.append(tg,b,document.createTextNode(f.b+" "));
+ if(f.src){const sm=document.createElement("small");const a=document.createElement("a");a.href=f.src[1];a.target="_blank";a.rel="noopener";a.textContent="Fonte: "+f.src[0];sm.append(a);li.append(sm)}
+ return li;
+}
+const POSTS=[{"a": "🐱", "n": "Gatinha Mimi", "t": "Minha gata aprendeu a abrir a geladeira. Socorro.", "e": 6, "r": 0, "q": 0, "k": "fun"}, {"a": "📢", "n": "Corrente do Zap", "t": "URGENTE!!! Compartilhe antes que apaguem: vão confiscar a poupança amanhã!", "e": 9, "r": 8, "q": -9, "k": "fake"}, {"a": "🏥", "n": "Posto de Saúde do Bairro", "t": "Vacina da gripe liberada para maiores de 60 anos até sexta. Leve o cartão do SUS.", "e": 2, "r": 0, "q": 8, "k": "util"}, {"a": "😡", "n": "Comentarista Indignado", "t": "O OUTRO LADO quer acabar com o seu churrasco. Você vai aceitar calado?", "e": 9, "r": 9, "q": -4, "k": "raiva"}, {"a": "🍰", "n": "Receitas da Vó", "t": "Bolo de fubá cremoso em 5 passos. Rende 12 pedaços.", "e": 5, "r": 0, "q": 2, "k": "fun"}, {"a": "🔎", "n": "Agência de Checagem", "t": "É falso o áudio que diz que o Pix vai ser taxado. Veja como checamos.", "e": 2, "r": 1, "q": 9, "k": "util"}, {"a": "⚽", "n": "Torcida Organizada", "t": "JUIZ LADRÃO! Olha esse pênalti que não deram 😤", "e": 8, "r": 7, "q": 0, "k": "raiva"}, {"a": "📰", "n": "Jornal da Cidade", "t": "Câmara aprova o orçamento: veja o que muda na sua rua.", "e": 2, "r": 1, "q": 6, "k": "util"}, {"a": "🤡", "n": "Página de Memes", "t": "Candidato tropeça no palanque e cai no bolo da festa (vídeo).", "e": 7, "r": 2, "q": 0, "k": "fun"}, {"a": "🌿", "n": "Saúde Natural Oficial", "t": "Médicos escondem: chá de boldo cura diabetes. Pare o remédio hoje!", "e": 8, "r": 4, "q": -10, "k": "fake"}, {"a": "🗳️", "n": "Justiça Eleitoral", "t": "Confira seu local de votação no aplicativo e-Título.", "e": 1, "r": 0, "q": 8, "k": "util"}, {"a": "😤", "n": "Comentarista Indignado", "t": "Viu o que ELES falaram de gente como você? Comenta aí que eu quero ver!", "e": 9, "r": 9, "q": -2, "k": "raiva"}];
+const REAL=[{"ev": "doc", "t": "Cinco pontos para a raiva", "b": "Documentos internos do Facebook, revelados em 2021, mostram que a partir de 2017 o algoritmo dava às reações, inclusive o “grr”, peso 5 vezes maior que o curtir. Em 2019, cientistas da empresa viram que posts com muito “grr” tinham mais desinformação. Em 2020 o peso do “grr” foi zerado.", "src": ["Washington Post, via Boston.com", "https://www.boston.com/news/technology/2021/10/26/five-points-for-anger-one-for-a-like-how-facebooks-formula-fostered-rage-and-misinformation/"]}, {"ev": "doc", "t": "Política de volta ao feed", "b": "Em janeiro de 2025, a Meta voltou a recomendar conteúdo político para quem não segue o perfil. Ela não confirmou se a mudança já valia no Brasil.", "src": ["Aos Fatos", "https://www.aosfatos.org/noticias/video-nikolas-ferreira-pix/"]}];
+const CASE=[{"ev": "doc", "t": "Nikolas vai muito melhor no Instagram", "b": "De fevereiro a abril de 2026, cada post dele no Instagram teve cerca de 1,33 milhão de interações, contra 145 mil no TikTok. Isso é fato; o motivo, não se sabe.", "src": ["Nexus/FSB", "https://www.nexus.fsb.com.br/estudos-divulgados/nikolas-ferreira-lidera-com-folga-ranking-de-deputados-com-maior-relevancia-nas-redes-sociais-aponta-levantamento-da-nexus/"]}, {"ev": "open", "t": "1.121 relatos de restrições a apoiadores de Lula", "b": "A maioria é de alcance e funções; contas banidas são 108. Os relatos não foram verificados um a um.", "src": ["Revista Fórum: levantamento da CTRL+Z", "https://revistaforum.com.br/revista-forum/meta-censura-perfis-apoio-lula/"]}, {"ev": "doc", "t": "Anúncios de Lula desativados “por engano”", "b": "A Meta admitiu ao TSE que desativou a conta de anúncios da campanha em 23 de setembro de 2026 e diz que ela voltou em cerca de uma hora.", "src": ["Revista Fórum: defesa da Meta no TSE", "https://revistaforum.com.br/tecnologia/meta-nao-entregou-dados-lula/"]}];
+const LOCKS=["Quanto das visualizações de cada perfil vem de quem não o segue", "A comparação com perfis do outro lado, do mesmo tamanho", "Quantas contas de cada lado foram restringidas, e por quê"];
+
+const deck=$("deck");
+const KIND={raiva:["Raiva","var(--no)"],fake:["Boato","var(--alleg)"],fun:["Diversão","var(--accent)"],util:["Serviço e checagem","var(--doc)"]};
+const BOSS_UP=["“Isso! Olha esse tanto de comentário!”","“Briga dá audiência. Continue.”","“Ninguém fecha o app no meio de uma briga.”"];
+const BOSS_CALM=["“Útil, mas ninguém comenta isso…”","“Vacina? Orçamento? O povo vai dormir.”","“Correto demais. Cadê a emoção?”"];
+const BOSS_HIDE=["“Escondeu? O pessoal ia AMAR brigar ali.”","“Menos tempo de tela. Estou de olho.”"];
+const BOSS_FUN=["“Gatinho segura o povo. Aprovado.”","“Rir também prende. Gostei.”"];
+let i,T,R,Q,boosted,busy;
+function pick(a){return a[Math.floor(Math.random()*a.length)]}
+function say(t){$("boss").textContent="";const b=document.createElement("b");b.textContent="O acionista: ";$("boss").append(b,document.createTextNode(t))}
+function meters(){const set=(id,v,max)=>{$("m"+id).style.width=Math.max(0,Math.min(100,v/max*100))+"%";$("v"+id).textContent=Math.round(v)};
+ set("T",T,80);set("R",R,60);set("Q",Math.max(0,Q),40);$("vQ").textContent=Math.round(Q)}
+function card(p,cls){const d=document.createElement("div");d.className="post"+(cls?" "+cls:"");
+ const w=document.createElement("div");w.className="who";const av=document.createElement("span");av.className="av";av.textContent=p.a;av.setAttribute("aria-hidden","true");
+ w.append(av,document.createTextNode(p.n));
+ const tx=document.createElement("div");tx.className="tx";tx.textContent=p.t;
+ const rx=document.createElement("div");rx.className="rx";rx.textContent="💬 "+(p.e*137+p.r*91)+"  ↗ "+(p.e*58)+"  😡 "+(p.r*203);
+ d.append(w,tx,rx);return d}
+function render(){deck.textContent="";if(i+1<POSTS.length)deck.append(card(POSTS[i+1],"back"));
+ const c=card(POSTS[i]);deck.append(c);drag(c);$("cnt").textContent=(i+1)+"/"+POSTS.length}
+function choose(up){if(busy||i>=POSTS.length)return;busy=true;const p=POSTS[i];const c=deck.lastElementChild;
+ if(up){boosted.push(p);T+=p.e;R+=p.r;Q+=p.q;
+  say(p.r>=6?pick(BOSS_UP):p.k==="fun"?pick(BOSS_FUN):p.e<=3?pick(BOSS_CALM):pick(BOSS_UP))}
+ else{T-=1;say(p.e>=8?pick(BOSS_HIDE):"“Tá, tanto faz.”")}
+ meters();c.classList.add(up?"up":"down");
+ setTimeout(()=>{i++;busy=false;if(i<POSTS.length)render();else finish()},380)}
+function drag(c){let y0=null,dy=0;
+ c.addEventListener("pointerdown",e=>{y0=e.clientY;dy=0;c.setPointerCapture(e.pointerId);c.style.transition="none"});
+ c.addEventListener("pointermove",e=>{if(y0===null)return;dy=e.clientY-y0;c.style.transform="translateY("+dy+"px) rotate("+(dy/40)+"deg)"});
+ const end=()=>{if(y0===null)return;y0=null;c.style.transition="";c.style.transform="";if(dy<-70)choose(true);else if(dy>70)choose(false)};
+ c.addEventListener("pointerup",end);c.addEventListener("pointercancel",end)}
+function finish(){$("hideB").disabled=true;deck.innerHTML='<div class="post"><div class="tx" style="grid-row:1/4;text-align:center">Fim do turno.<br>Veja o resultado abaixo ⬇</div></div>';$("boostB").disabled=true;
+ const n=boosted.length;const cnt={raiva:0,fake:0,fun:0,util:0};boosted.forEach(p=>cnt[p.k]++);
+ const angry=cnt.raiva+cnt.fake;
+ let title,body;
+ if(T>=45&&angry>=4){title="O acionista te deu um bônus";body="Seu feed prendeu o povo no app, e quase tudo que você subiu era briga ou boato. É o jeito mais rápido de ganhar tempo de tela."}
+ else if(cnt.util>=3&&angry<=1){title="Você foi demitido";body="Seu feed ficou útil e calmo, mas o tempo no app caiu. Para quem vende anúncio, isso é prejuízo."}
+ else{title="Nem bônus, nem demissão";body="Você misturou um pouco de tudo. Os algoritmos de verdade fazem essa conta milhões de vezes por segundo, e cada empresa escolhe o peso de cada coisa."}
+ $("endT").textContent=title;$("endB").textContent=body+" Você impulsionou "+n+" de "+POSTS.length+" posts:";
+ const mix=$("mix");mix.textContent="";$("legend").textContent="";
+ Object.keys(KIND).forEach(k=>{if(!cnt[k])return;const s=document.createElement("i");s.style.width=(cnt[k]/Math.max(1,n)*100)+"%";s.style.background=KIND[k][1];mix.append(s);
+  const l=document.createElement("span");l.style.setProperty("--c",KIND[k][1]);l.textContent=KIND[k][0]+": "+cnt[k];$("legend").append(l)});
+ mix.setAttribute("aria-label",$("legend").textContent);
+ $("real").textContent="";REAL.forEach(f=>$("real").append(factLi(f,false)));
+ $("case").textContent="";CASE.forEach(f=>$("case").append(factLi(f,false)));
+ $("locks").textContent="";$("lockMsg").textContent="";
+ LOCKS.forEach(t=>{const b=document.createElement("button");b.type="button";b.className="lock";const k=document.createElement("span");k.className="k";k.textContent="🔒";k.setAttribute("aria-hidden","true");b.append(k,document.createTextNode(t));
+  b.addEventListener("click",()=>{b.classList.remove("shake");void b.offsetWidth;b.classList.add("shake");$("lockMsg").textContent="Trancado. Só a Meta tem essa chave."});$("locks").append(b)});
+ $("end").hidden=false;setTimeout(()=>$("end").scrollIntoView({behavior:"smooth",block:"start"}),300)}
+function start(){i=0;T=0;R=0;Q=0;boosted=[];busy=false;$("hideB").disabled=false;$("boostB").disabled=false;$("end").hidden=true;meters();render();
+ say("“Seu trabalho é simples: deixar o povo no app o máximo de tempo. Mais tempo, mais anúncio.”")}
+$("boostB").addEventListener("click",()=>choose(true));
+$("hideB").addEventListener("click",()=>choose(false));
+document.addEventListener("keydown",e=>{if($("end").hidden===false)return;if(e.key==="ArrowUp"){e.preventDefault();choose(true)}if(e.key==="ArrowDown"){e.preventDefault();choose(false)}});
+$("again").addEventListener("click",()=>{start();$("game").scrollIntoView({behavior:"smooth",block:"start"})});
+start();
+
 </script>
-<script src="https://fcarvalhodev.github.io/rotas/jogos/jogo.js"></script>
 </body></html>
